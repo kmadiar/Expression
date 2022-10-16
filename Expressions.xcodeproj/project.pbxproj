@@ -18,6 +18,20 @@
 		70EFDB9328EF5AC600087CAA /* MMultiplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDB6328EF556D00087CAA /* MMultiplication.swift */; };
 		70EFDB9828EF5EBE00087CAA /* MMultiplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDB9728EF5EBE00087CAA /* MMultiplicationTests.swift */; };
 		70EFDB9A28EF5FF600087CAA /* MBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDB9928EF5FF600087CAA /* MBool.swift */; };
+		70EFDBA428FA184900087CAA /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 70EFDBA328FA184900087CAA /* Yams */; };
+		70EFDBA628FC8AB400087CAA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBA528FC8AB400087CAA /* Parser.swift */; };
+		70EFDBAB28FC8BCC00087CAA /* YMLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDB9E28F8BFF800087CAA /* YMLReader.swift */; };
+		70EFDBAC28FC8BD100087CAA /* input.yml in Resources */ = {isa = PBXBuildFile; fileRef = 70EFDBA028F8C13000087CAA /* input.yml */; };
+		70EFDBAE28FC97D200087CAA /* MError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBAD28FC97D200087CAA /* MError.swift */; };
+		70EFDBB328FC980D00087CAA /* Collection+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBB228FC980D00087CAA /* Collection+Subscript.swift */; };
+		70EFDBB528FC9EE900087CAA /* MFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBB428FC9EE900087CAA /* MFloat.swift */; };
+		70EFDBB728FCA35400087CAA /* MToFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBB628FCA35400087CAA /* MToFloat.swift */; };
+		70EFDBB928FCA45800087CAA /* MToInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBB828FCA45800087CAA /* MToInt.swift */; };
+		70EFDBBB28FCA9AE00087CAA /* MIntAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBBA28FCA9AE00087CAA /* MIntAdd.swift */; };
+		70EFDBBD28FCAB2100087CAA /* MFloatAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBBC28FCAB2100087CAA /* MFloatAdd.swift */; };
+		70EFDBBF28FCABB900087CAA /* MIntMul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBBE28FCABB900087CAA /* MIntMul.swift */; };
+		70EFDBC128FCABEE00087CAA /* MFloatMul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBC028FCABEE00087CAA /* MFloatMul.swift */; };
+		70EFDBC328FCB1C100087CAA /* MParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDBC228FCB1C100087CAA /* MParserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +54,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		70EFDB4E28EF548A00087CAA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
@@ -63,6 +77,19 @@
 		70EFDB8628EF5A6D00087CAA /* MAddTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAddTests.swift; sourceTree = "<group>"; };
 		70EFDB9728EF5EBE00087CAA /* MMultiplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMultiplicationTests.swift; sourceTree = "<group>"; };
 		70EFDB9928EF5FF600087CAA /* MBool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBool.swift; sourceTree = "<group>"; };
+		70EFDB9E28F8BFF800087CAA /* YMLReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YMLReader.swift; sourceTree = "<group>"; };
+		70EFDBA028F8C13000087CAA /* input.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = input.yml; sourceTree = "<group>"; };
+		70EFDBA528FC8AB400087CAA /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		70EFDBAD28FC97D200087CAA /* MError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MError.swift; sourceTree = "<group>"; };
+		70EFDBB228FC980D00087CAA /* Collection+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Subscript.swift"; sourceTree = "<group>"; };
+		70EFDBB428FC9EE900087CAA /* MFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFloat.swift; sourceTree = "<group>"; };
+		70EFDBB628FCA35400087CAA /* MToFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MToFloat.swift; sourceTree = "<group>"; };
+		70EFDBB828FCA45800087CAA /* MToInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MToInt.swift; sourceTree = "<group>"; };
+		70EFDBBA28FCA9AE00087CAA /* MIntAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIntAdd.swift; sourceTree = "<group>"; };
+		70EFDBBC28FCAB2100087CAA /* MFloatAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFloatAdd.swift; sourceTree = "<group>"; };
+		70EFDBBE28FCABB900087CAA /* MIntMul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIntMul.swift; sourceTree = "<group>"; };
+		70EFDBC028FCABEE00087CAA /* MFloatMul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFloatMul.swift; sourceTree = "<group>"; };
+		70EFDBC228FCB1C100087CAA /* MParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EFDBA428FA184900087CAA /* Yams in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +152,7 @@
 			children = (
 				70EFDB5E28EF54EB00087CAA /* MInt.swift */,
 				70EFDB9928EF5FF600087CAA /* MBool.swift */,
+				70EFDBB428FC9EE900087CAA /* MFloat.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -133,6 +162,12 @@
 			children = (
 				70EFDB6128EF555A00087CAA /* MAdd.swift */,
 				70EFDB6328EF556D00087CAA /* MMultiplication.swift */,
+				70EFDBB628FCA35400087CAA /* MToFloat.swift */,
+				70EFDBB828FCA45800087CAA /* MToInt.swift */,
+				70EFDBBA28FCA9AE00087CAA /* MIntAdd.swift */,
+				70EFDBBC28FCAB2100087CAA /* MFloatAdd.swift */,
+				70EFDBBE28FCABB900087CAA /* MIntMul.swift */,
+				70EFDBC028FCABEE00087CAA /* MFloatMul.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -166,9 +201,11 @@
 		70EFDB8F28EF5A8700087CAA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				70EFDBB128FC97FF00087CAA /* Extensions */,
+				70EFDBA828FC8AE500087CAA /* Utils */,
+				70EFDBA728FC8AC100087CAA /* Core */,
 				70EFDB6028EF554100087CAA /* Actions */,
 				70EFDB5D28EF54D800087CAA /* Types */,
-				70EFDB5B28EF54C200087CAA /* Expression.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -177,9 +214,37 @@
 			isa = PBXGroup;
 			children = (
 				70EFDB8628EF5A6D00087CAA /* MAddTests.swift */,
+				70EFDBC228FCB1C100087CAA /* MParserTests.swift */,
 				70EFDB9728EF5EBE00087CAA /* MMultiplicationTests.swift */,
 			);
 			path = Actions;
+			sourceTree = "<group>";
+		};
+		70EFDBA728FC8AC100087CAA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				70EFDB5B28EF54C200087CAA /* Expression.swift */,
+				70EFDBA528FC8AB400087CAA /* Parser.swift */,
+				70EFDBAD28FC97D200087CAA /* MError.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		70EFDBA828FC8AE500087CAA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				70EFDB9E28F8BFF800087CAA /* YMLReader.swift */,
+				70EFDBA028F8C13000087CAA /* input.yml */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		70EFDBB128FC97FF00087CAA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				70EFDBB228FC980D00087CAA /* Collection+Subscript.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +275,9 @@
 				70EFDB9528EF5BDE00087CAA /* PBXTargetDependency */,
 			);
 			name = Expressions;
+			packageProductDependencies = (
+				70EFDBA328FA184900087CAA /* Yams */,
+			);
 			productName = Expressions;
 			productReference = 70EFDB5028EF548A00087CAA /* Expressions */;
 			productType = "com.apple.product-type.tool";
@@ -280,6 +348,9 @@
 				Base,
 			);
 			mainGroup = 70EFDB4728EF548A00087CAA;
+			packageReferences = (
+				70EFDBA228FA184900087CAA /* XCRemoteSwiftPackageReference "Yams" */,
+			);
 			productRefGroup = 70EFDB5128EF548A00087CAA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -296,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EFDBAC28FC8BD100087CAA /* input.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,11 +394,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				70EFDB7C28EF5A6C00087CAA /* ELogic.docc in Sources */,
+				70EFDBAE28FC97D200087CAA /* MError.swift in Sources */,
 				70EFDB9A28EF5FF600087CAA /* MBool.swift in Sources */,
 				70EFDB9328EF5AC600087CAA /* MMultiplication.swift in Sources */,
+				70EFDBA628FC8AB400087CAA /* Parser.swift in Sources */,
+				70EFDBB928FCA45800087CAA /* MToInt.swift in Sources */,
 				70EFDB9028EF5AA400087CAA /* Expression.swift in Sources */,
 				70EFDB9128EF5ABC00087CAA /* MInt.swift in Sources */,
+				70EFDBB728FCA35400087CAA /* MToFloat.swift in Sources */,
+				70EFDBC128FCABEE00087CAA /* MFloatMul.swift in Sources */,
 				70EFDB9228EF5AC200087CAA /* MAdd.swift in Sources */,
+				70EFDBAB28FC8BCC00087CAA /* YMLReader.swift in Sources */,
+				70EFDBBD28FCAB2100087CAA /* MFloatAdd.swift in Sources */,
+				70EFDBB528FC9EE900087CAA /* MFloat.swift in Sources */,
+				70EFDBB328FC980D00087CAA /* Collection+Subscript.swift in Sources */,
+				70EFDBBF28FCABB900087CAA /* MIntMul.swift in Sources */,
+				70EFDBBB28FCA9AE00087CAA /* MIntAdd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +419,7 @@
 			files = (
 				70EFDB8728EF5A6D00087CAA /* MAddTests.swift in Sources */,
 				70EFDB9828EF5EBE00087CAA /* MMultiplicationTests.swift in Sources */,
+				70EFDBC328FCB1C100087CAA /* MParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +708,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		70EFDBA228FA184900087CAA /* XCRemoteSwiftPackageReference "Yams" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jpsim/Yams";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		70EFDBA328FA184900087CAA /* Yams */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70EFDBA228FA184900087CAA /* XCRemoteSwiftPackageReference "Yams" */;
+			productName = Yams;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 70EFDB4828EF548A00087CAA /* Project object */;
 }

@@ -6,15 +6,21 @@
 
 import Foundation
 import ELogic
+import Yams
 
-let x = MInt(x: 10)
-let y = MInt(x: 12)
+do {
+    guard let content = try? YMLReader().read(),
+          let yaml = try? Yams.load(yaml: content) else {
+        throw MError.badInput
+    }
 
-let exp = MAdd(x: x, y: y)
+    let parser: EParser = ParserImplementation()
 
-let exp2 = MAdd(x: MInt(x: 100), y: MInt(x: 200))
+    let expression = try parser.parse(yaml)
 
-let exp3 = MMultiplication(x: exp, y: exp2)
-
-print(exp3.eval())
-
+    print(expression)
+    print(expression.eval())
+    print(expression.unparse())
+} catch {
+    print(error)
+}

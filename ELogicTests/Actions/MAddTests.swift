@@ -16,7 +16,7 @@ class MAddTests: XCTestCase {
         let e2 = MInt(x: 2)
 
         // When
-        let addition = MAdd(x: e1, y: e2).eval()
+        let addition = MAdd(left: e1, right: e2).eval()
 
         // Then
 
@@ -28,13 +28,17 @@ class MAddTests: XCTestCase {
         XCTAssertEqual(addition, e1 + e2)
     }
 
+    func testUnparse() throws {
+        XCTAssertEqual(42, MInt(x: 42).unparse() as! Int)
+    }
+
     func testOneAddTrueShouldFail() throws {
         // Given
         let e1 = MInt(x: 1)
         let e2 = MBool(value: true)
 
         // When
-        let addition = MAdd(x: e1, y: e2).eval()
+        let addition = MAdd(left: e1, right: e2).eval()
 
         // Then
         guard let addition = addition as? MAdd else {
@@ -42,8 +46,8 @@ class MAddTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual((addition.x as? MInt)?.x, e1.x)
-        XCTAssertEqual((addition.y as? MBool)?.value, e2.value)
+        XCTAssertEqual((addition.left as? MInt)?.value, e1.value)
+        XCTAssertEqual((addition.right as? MBool)?.value, e2.value)
     }
 
     func testMultipleAdditions() throws {
@@ -51,10 +55,10 @@ class MAddTests: XCTestCase {
         let e1 = MInt(x: 1)
         let e2 = MInt(x: 2)
         let e3 = MInt(x: 100)
-        let addition = MAdd(x: e1, y: e2)
+        let addition = MAdd(left: e1, right: e2)
 
         // When
-        let sum = MAdd(x: addition, y: e3).eval()
+        let sum = MAdd(left: addition, right: e3).eval()
 
         // Then
 
@@ -71,12 +75,12 @@ class MAddTests: XCTestCase {
         let e1 = MInt(x: 1)
         let e2 = MInt(x: 2)
         let e3 = MInt(x: 100)
-        let addition = MAdd(x: e1, y: e2)
+        let addition = MAdd(left: e1, right: e2)
         let mBool = MBool(value: true)
 
         // When
-        let sum = MAdd(x: addition, y: e3).eval()
-        let sumWithBool = MAdd(x: sum, y: mBool).eval()
+        let sum = MAdd(left: addition, right: e3).eval()
+        let sumWithBool = MAdd(left: sum, right: mBool).eval()
         // Then
 
         guard let addition = sumWithBool as? MAdd else {
@@ -84,7 +88,7 @@ class MAddTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual((addition.y as? MBool)?.value, mBool.value)
+        XCTAssertEqual((addition.right as? MBool)?.value, mBool.value)
 
     }
 
@@ -94,7 +98,7 @@ class MAddTests: XCTestCase {
         let e2 = MBool(value: true)
 
         // When
-        let add = MAdd(x: e1, y: e2).eval()
+        let add = MAdd(left: e1, right: e2).eval()
 
         // Then
         guard let mBool = add as? MBool else {
@@ -111,7 +115,7 @@ class MAddTests: XCTestCase {
         let e2 = MBool(value: false)
 
         // When
-        let add = MAdd(x: e1, y: e2).eval()
+        let add = MAdd(left: e1, right: e2).eval()
 
         // Then
         guard let mBool = add as? MBool else {
@@ -128,7 +132,7 @@ class MAddTests: XCTestCase {
         let e2 = MBool(value: true)
 
         // When
-        let add = MAdd(x: e1, y: e2).eval()
+        let add = MAdd(left: e1, right: e2).eval()
 
         // Then
         guard let mBool = add as? MBool else {
@@ -145,7 +149,7 @@ class MAddTests: XCTestCase {
         let e2 = MBool(value: false)
 
         // When
-        let add = MAdd(x: e1, y: e2).eval()
+        let add = MAdd(left: e1, right: e2).eval()
 
         // Then
         guard let mBool = add as? MBool else {

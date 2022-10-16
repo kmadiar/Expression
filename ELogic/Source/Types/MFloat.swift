@@ -1,21 +1,21 @@
 //
-//  MBool.swift
+//  MFloat.swift
 //  ELogic
 //
-//  Created by Kostiantyn Madiar on 06.10.2022.
+//  Created by Kostiantyn Madiar on 16.10.2022.
 //
 
 import Foundation
 
-public struct MBool {
-    public let value: Bool
+public struct MFloat {
+    public let value: Float
 
-    public init(value: Bool) {
+    public init(value: Float) {
         self.value = value
     }
 }
 
-extension MBool: MExpression {
+extension MFloat: MExpression {
     public func unparse() -> Any {
         value
     }
@@ -25,12 +25,12 @@ extension MBool: MExpression {
     }
 }
 
-extension MBool {
+extension MFloat {
     static func + (lhs: Self, rhs: Self) -> Self {
-        .init(value: lhs.value || rhs.value)
+        .init(value: lhs.value + rhs.value)
     }
 
     static func * (lhs: Self, rhs: Self) -> Self {
-        .init(value: lhs.value && rhs.value)
+        .init(value: lhs.value * rhs.value)
     }
 }
