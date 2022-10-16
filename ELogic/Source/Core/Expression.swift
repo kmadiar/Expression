@@ -9,4 +9,5 @@ import Foundation
 
 public protocol MExpression {
     func eval() -> MExpression
+    func unparse() -> Any
 }

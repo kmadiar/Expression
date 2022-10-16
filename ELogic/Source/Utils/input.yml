@@ -1,0 +1,14 @@
+[add,
+    [add,
+        5.1,
+        [mul,
+            2,
+            [mul,
+                [to_float, 2],
+                [to_float, 3]]]],
+    [add,
+        [to_int,
+            5.2],
+        [to_int,
+            6.3]
+            ]]

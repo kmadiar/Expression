@@ -16,7 +16,7 @@ class MMultiplicationTests: XCTestCase {
         let e2 = MInt(x: 2)
 
         // When
-        let multiplication = MMultiplication(x: e1, y: e2).eval()
+        let multiplication = MMultiplication(left: e1, right: e2).eval()
 
         // Then
 
@@ -34,7 +34,7 @@ class MMultiplicationTests: XCTestCase {
         let e2 = MBool(value: true)
 
         // When
-        let multiplication = MMultiplication(x: e1, y: e2).eval()
+        let multiplication = MMultiplication(left: e1, right: e2).eval()
 
         // Then
 
@@ -43,8 +43,8 @@ class MMultiplicationTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual((multiplication.x as? MInt)?.x, e1.x)
-        XCTAssertEqual((multiplication.y as? MBool)?.value, e2.value)
+        XCTAssertEqual((multiplication.left as? MInt)?.value, e1.value)
+        XCTAssertEqual((multiplication.right as? MBool)?.value, e2.value)
     }
 
     func testOneAddHundredSuccess() throws {
@@ -52,10 +52,10 @@ class MMultiplicationTests: XCTestCase {
         let e1 = MInt(x: 1)
         let e2 = MInt(x: 2)
         let e3 = MInt(x: 100)
-        let addition = MMultiplication(x: e1, y: e2)
+        let addition = MMultiplication(left: e1, right: e2)
 
         // When
-        let multiplication = MMultiplication(x: addition, y: e3).eval()
+        let multiplication = MMultiplication(left: addition, right: e3).eval()
 
 
         // Then
@@ -74,7 +74,7 @@ class MMultiplicationTests: XCTestCase {
         let e2 = MBool(value: true)
 
         // When
-        let multiplication = MMultiplication(x: e1, y: e2).eval()
+        let multiplication = MMultiplication(left: e1, right: e2).eval()
 
         // Then
         guard let mBool = multiplication as? MBool else {
@@ -91,7 +91,7 @@ class MMultiplicationTests: XCTestCase {
         let e2 = MBool(value: false)
 
         // When
-        let multiplication = MMultiplication(x: e1, y: e2).eval()
+        let multiplication = MMultiplication(left: e1, right: e2).eval()
 
         // Then
         guard let mBool = multiplication as? MBool else {
@@ -108,7 +108,7 @@ class MMultiplicationTests: XCTestCase {
         let e2 = MBool(value: true)
 
         // When
-        let multiplication = MMultiplication(x: e1, y: e2).eval()
+        let multiplication = MMultiplication(left: e1, right: e2).eval()
 
         // Then
         guard let mBool = multiplication as? MBool else {
@@ -125,7 +125,7 @@ class MMultiplicationTests: XCTestCase {
         let e2 = MBool(value: true)
 
         // When
-        let multiplication = MMultiplication(x: e1, y: e2).eval()
+        let multiplication = MMultiplication(left: e1, right: e2).eval()
 
         // Then
         guard let mBool = multiplication as? MBool else {
