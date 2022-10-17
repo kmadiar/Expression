@@ -14,7 +14,7 @@ do {
         throw MError.badInput
     }
 
-    let parser: EParser = ParserImplementation()
+    let parser: Parser = ParserImplementation()
 
     let expression = try parser.parse(yaml)
 

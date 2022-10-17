@@ -7,14 +7,14 @@
 
 import Foundation
 
-public protocol EParser {
-    func parse(_ input: Any) throws -> MExpression
+public protocol Parser {
+    func parse(_ input: Any) throws -> Expression
 }
 
-public class ParserImplementation: EParser {
+public class ParserImplementation: Parser {
     public init() {}
 
-    public func parse(_ input: Any) throws -> MExpression {
+    public func parse(_ input: Any) throws -> Expression {
         if let type = parseType(input: input) {
             return type
         }
@@ -23,7 +23,7 @@ public class ParserImplementation: EParser {
 }
 
 private extension ParserImplementation {
-    func parseList(_ input: Any) throws -> MExpression {
+    func parseList(_ input: Any) throws -> Expression {
         if var input = input as? Array<Any> {
             guard let operation = input.first as? String else {
                 throw MError.emptyList
@@ -57,49 +57,49 @@ private extension ParserImplementation {
 
 // MARK: - Parse operations
 private extension ParserImplementation {
-    func handleAdd(_ input: Array<Any>) throws -> MExpression {
+    func handleAdd(_ input: Array<Any>) throws -> Expression {
         try MAdd(twoArguments(input))
     }
 
-    func handleIntAdd(_ input: Array<Any>) throws -> MExpression {
+    func handleIntAdd(_ input: Array<Any>) throws -> Expression {
         try MIntAdd(twoArguments(input))
     }
 
-    func handleFloatAdd(_ input: Array<Any>) throws -> MExpression {
+    func handleFloatAdd(_ input: Array<Any>) throws -> Expression {
         try MFloatAdd(twoArguments(input))
     }
 
-    func handleMultiplication(_ input: Array<Any>) throws -> MExpression {
+    func handleMultiplication(_ input: Array<Any>) throws -> Expression {
         try MMultiplication(twoArguments(input))
     }
 
-    func handleIntMultiplication(_ input: Array<Any>) throws -> MExpression {
+    func handleIntMultiplication(_ input: Array<Any>) throws -> Expression {
         try MIntMul(twoArguments(input))
     }
 
-    func handleFloatMultiplication(_ input: Array<Any>) throws -> MExpression {
+    func handleFloatMultiplication(_ input: Array<Any>) throws -> Expression {
         try MFloatMul(twoArguments(input))
     }
 
-    func handleToInt(_ input: Array<Any>) throws -> MExpression {
+    func handleToInt(_ input: Array<Any>) throws -> Expression {
         try MToInt(value: singleArgument(input))
     }
 
-    func handleToFloat(_ input: Array<Any>) throws -> MExpression {
+    func handleToFloat(_ input: Array<Any>) throws -> Expression {
         try MToFloat(value: singleArgument(input))
     }
 }
 
 // MARK: - Parse types
 private extension ParserImplementation {
-    func twoArguments(_ input: Array<Any>) throws -> (MExpression, MExpression) {
+    func twoArguments(_ input: Array<Any>) throws -> (Expression, Expression) {
         try argumentCountCheck(input, count: 2)
         let left = try parse(input[0])
         let right = try parse(input[1])
         return (left, right)
     }
 
-    func singleArgument(_ input: Array<Any>) throws -> MExpression {
+    func singleArgument(_ input: Array<Any>) throws -> Expression {
         try argumentCountCheck(input, count: 1)
         return try parse(input[0])
     }
@@ -110,14 +110,14 @@ private extension ParserImplementation {
         }
     }
 
-    func parseType( input: Any) -> MExpression? {
+    func parseType( input: Any) -> Expression? {
         parseInt(input) ??
         parseFloat(input) ??
         parseBool(input) ??
         nil
     }
 
-    func parseBool(_ input: Any) -> MExpression? {
+    func parseBool(_ input: Any) -> Expression? {
         if let input = input as? Bool {
             return MBool(value: input)
         }
@@ -125,14 +125,14 @@ private extension ParserImplementation {
         return nil
     }
 
-    func parseInt(_ input: Any) -> MExpression? {
+    func parseInt(_ input: Any) -> Expression? {
         if let input = input as? Int {
-            return MInt(x: input)
+            return MInt(value: input)
         }
         return nil
     }
 
-    func parseFloat(_ input: Any) -> MExpression? {
+    func parseFloat(_ input: Any) -> Expression? {
         if let input = input as? Double {
             return MFloat(value: Float(input))
         }

@@ -8,30 +8,30 @@
 import Foundation
 
 public struct MFloatAdd {
-    public let left: MExpression
-    public let right: MExpression
+    public let left: Expression
+    public let right: Expression
 
-    public init(_ values: (left: MExpression, right: MExpression)) {
+    public init(_ values: (left: Expression, right: Expression)) {
         self.init(left: values.left, right: values.right)
     }
 
-    public init(left: MExpression, right: MExpression) {
+    public init(left: Expression, right: Expression) {
         self.left = left
         self.right = right
     }
 }
 
-extension MFloatAdd: MExpression {
+extension MFloatAdd: Expression {
     public func unparse() -> Any {
         ["float_add", left.unparse(), right.unparse()]
     }
 
-    public func eval() -> MExpression {
+    public func eval() -> Expression {
         evalToFloat() ??
         self
     }
 
-    func evalToFloat() -> MExpression? {
+    func evalToFloat() -> Expression? {
         if let left = MToFloat(value: left).eval() as? MFloat,
            let right = MToFloat(value: right).eval() as? MFloat {
             return left + right

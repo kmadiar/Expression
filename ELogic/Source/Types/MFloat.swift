@@ -15,12 +15,12 @@ public struct MFloat {
     }
 }
 
-extension MFloat: MExpression {
+extension MFloat: Expression {
     public func unparse() -> Any {
         value
     }
 
-    public func eval() -> MExpression {
+    public func eval() -> Expression {
         self
     }
 }

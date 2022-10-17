@@ -8,25 +8,25 @@
 import Foundation
 
 public struct MMultiplication {
-    public let left: MExpression
-    public let right: MExpression
+    public let left: Expression
+    public let right: Expression
 
-    public init(_ values: (left: MExpression, right: MExpression)) {
+    public init(_ values: (left: Expression, right: Expression)) {
         self.init(left: values.left, right: values.right)
     }
 
-    public init(left: MExpression, right: MExpression) {
+    public init(left: Expression, right: Expression) {
         self.left = left
         self.right = right
     }
 }
 
-extension MMultiplication: MExpression {
+extension MMultiplication: Expression {
     public func unparse() -> Any {
         ["mul", left.unparse(), right.unparse()]
     }
 
-    public func eval() -> MExpression {
+    public func eval() -> Expression {
         evalMInt() ??
         evalMFloat() ??
         evalMBool() ??
@@ -34,7 +34,7 @@ extension MMultiplication: MExpression {
         self
     }
 
-    func evalMBool() -> MExpression? {
+    func evalMBool() -> Expression? {
         if let left = left.eval() as? MBool,
            let right = right.eval() as? MBool {
             return left * right
@@ -42,7 +42,7 @@ extension MMultiplication: MExpression {
         return nil
     }
 
-    func evalMFloat() -> MExpression? {
+    func evalMFloat() -> Expression? {
         if let left = left.eval() as? MFloat,
            let right = right.eval() as? MFloat {
             return left * right
@@ -50,7 +50,7 @@ extension MMultiplication: MExpression {
         return nil
     }
 
-    func evalMInt() -> MExpression? {
+    func evalMInt() -> Expression? {
         if let multX = left.eval() as? MInt,
            let multY = right.eval() as? MInt {
             return multX * multY
@@ -58,7 +58,7 @@ extension MMultiplication: MExpression {
         return nil
     }
 
-    func evalIntFloat() -> MExpression? {
+    func evalIntFloat() -> Expression? {
         if let left = left.eval() as? MInt,
            let right = right.eval() as? MFloat {
             return MFloat(value: Float(left.value)) * right

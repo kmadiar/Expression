@@ -8,40 +8,40 @@
 import Foundation
 
 public struct MToFloat {
-    public let value: MExpression
+    public let value: Expression
 
-    public init(value: MExpression) {
+    public init(value: Expression) {
         self.value = value
     }
 }
 
-extension MToFloat: MExpression {
+extension MToFloat: Expression {
     public func unparse() -> Any {
         ["to_float", value.unparse()]
     }
 
-    public func eval() -> MExpression {
+    public func eval() -> Expression {
         evalMInt() ??
         evalMFloat() ??
         evalMBool() ??
         self
     }
 
-    func evalMFloat() -> MExpression? {
+    func evalMFloat() -> Expression? {
         if let value = value.eval() as? MFloat {
             return value
         }
         return nil
     }
 
-    func evalMInt() -> MExpression? {
+    func evalMInt() -> Expression? {
         if let value = value.eval() as? MInt {
             return MFloat(value: Float(value.value))
         }
         return nil
     }
 
-    func evalMBool() -> MExpression? {
+    func evalMBool() -> Expression? {
         if let value = value.eval() as? MBool {
             return MFloat(value: value.value ? 1.0 : 0.0)
         }
