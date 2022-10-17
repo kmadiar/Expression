@@ -15,12 +15,12 @@ public struct MBool {
     }
 }
 
-extension MBool: MExpression {
+extension MBool: Expression {
     public func unparse() -> Any {
         value
     }
 
-    public func eval() -> MExpression {
+    public func eval() -> Expression {
         self
     }
 }

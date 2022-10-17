@@ -12,8 +12,8 @@ class MMultiplicationTests: XCTestCase {
 
     func testOneMultipliedByTwo() throws {
         // Given
-        let e1 = MInt(x: 1)
-        let e2 = MInt(x: 2)
+        let e1 = MInt(value: 1)
+        let e2 = MInt(value: 2)
 
         // When
         let multiplication = MMultiplication(left: e1, right: e2).eval()
@@ -30,7 +30,7 @@ class MMultiplicationTests: XCTestCase {
 
     func testOneMultipliedByBoolean() throws {
         // Given
-        let e1 = MInt(x: 1)
+        let e1 = MInt(value: 1)
         let e2 = MBool(value: true)
 
         // When
@@ -49,9 +49,9 @@ class MMultiplicationTests: XCTestCase {
 
     func testOneAddHundredSuccess() throws {
         // Given
-        let e1 = MInt(x: 1)
-        let e2 = MInt(x: 2)
-        let e3 = MInt(x: 100)
+        let e1 = MInt(value: 1)
+        let e2 = MInt(value: 2)
+        let e3 = MInt(value: 100)
         let addition = MMultiplication(left: e1, right: e2)
 
         // When

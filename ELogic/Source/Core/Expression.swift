@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol MExpression {
-    func eval() -> MExpression
+public protocol Expression {
+    func eval() -> Expression
     func unparse() -> Any
 }

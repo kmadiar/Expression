@@ -8,31 +8,31 @@
 import Foundation
 
 public struct MIntMul {
-    public let left: MExpression
-    public let right: MExpression
+    public let left: Expression
+    public let right: Expression
 
 
-    public init(_ values: (left: MExpression, right: MExpression)) {
+    public init(_ values: (left: Expression, right: Expression)) {
         self.init(left: values.left, right: values.right)
     }
 
-    public init(left: MExpression, right: MExpression) {
+    public init(left: Expression, right: Expression) {
         self.left = left
         self.right = right
     }
 }
 
-extension MIntMul: MExpression {
+extension MIntMul: Expression {
     public func unparse() -> Any {
         ["int_mul", left.unparse(), right.unparse()]
     }
 
-    public func eval() -> MExpression {
+    public func eval() -> Expression {
         evalToInt() ??
         self
     }
 
-    func evalToInt() -> MExpression? {
+    func evalToInt() -> Expression? {
         if let left = MToInt(value: left).eval() as? MInt,
            let right = MToInt(value: right).eval() as? MInt {
             return left * right

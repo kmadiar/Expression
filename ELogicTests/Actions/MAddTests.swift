@@ -12,8 +12,8 @@ class MAddTests: XCTestCase {
 
     func testOneAddTwo() throws {
         // Given
-        let e1 = MInt(x: 1)
-        let e2 = MInt(x: 2)
+        let e1 = MInt(value: 1)
+        let e2 = MInt(value: 2)
 
         // When
         let addition = MAdd(left: e1, right: e2).eval()
@@ -29,12 +29,12 @@ class MAddTests: XCTestCase {
     }
 
     func testUnparse() throws {
-        XCTAssertEqual(42, MInt(x: 42).unparse() as! Int)
+        XCTAssertEqual(42, MInt(value: 42).unparse() as! Int)
     }
 
     func testOneAddTrueShouldFail() throws {
         // Given
-        let e1 = MInt(x: 1)
+        let e1 = MInt(value: 1)
         let e2 = MBool(value: true)
 
         // When
@@ -52,9 +52,9 @@ class MAddTests: XCTestCase {
 
     func testMultipleAdditions() throws {
         // Given
-        let e1 = MInt(x: 1)
-        let e2 = MInt(x: 2)
-        let e3 = MInt(x: 100)
+        let e1 = MInt(value: 1)
+        let e2 = MInt(value: 2)
+        let e3 = MInt(value: 100)
         let addition = MAdd(left: e1, right: e2)
 
         // When
@@ -72,9 +72,9 @@ class MAddTests: XCTestCase {
 
     func testMultipleAdditionsWithBooleanShouldFail() throws {
         // Given
-        let e1 = MInt(x: 1)
-        let e2 = MInt(x: 2)
-        let e3 = MInt(x: 100)
+        let e1 = MInt(value: 1)
+        let e2 = MInt(value: 2)
+        let e3 = MInt(value: 100)
         let addition = MAdd(left: e1, right: e2)
         let mBool = MBool(value: true)
 
