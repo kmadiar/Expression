@@ -40,6 +40,14 @@ private extension ParserImplementation {
                 return try handleSubtract(input)
             case "neg":
                 return try handleNegation(input)
+            case "list":
+                return try handleList(input)
+            case "append_list":
+                return try handleAppendList(input)
+            case "head_list":
+                return try handleHeadList(input)
+            case "tail_list":
+                return try handleTailList(input)
             case "to_int":
                 return try handleToInt(input)
             case "to_float":
@@ -63,6 +71,23 @@ private extension ParserImplementation {
 
 // MARK: - Parse operations
 private extension ParserImplementation {
+    // MARK: - list
+    func handleList(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.List(value: input.map(parse))
+    }
+
+    func handleAppendList(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.AppendList(twoArguments(input))
+    }
+
+    func handleHeadList(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.HeadList(value: singleArgument(input))
+    }
+
+    func handleTailList(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.TailList(value: singleArgument(input))
+    }
+
     // MARK: - negation
     func handleNegation(_ input: Array<Any>) throws -> SugarExpression {
         try Sugar.Neg(value: singleArgument(input))

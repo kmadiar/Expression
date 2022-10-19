@@ -20,6 +20,14 @@
 		70DB8A5F28FF41B7002AA41E /* Sugar+ToFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A5E28FF41B7002AA41E /* Sugar+ToFloat.swift */; };
 		70DB8A6128FF4698002AA41E /* Sugar+Sum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A6028FF4698002AA41E /* Sugar+Sum.swift */; };
 		70DB8A6728FF6334002AA41E /* CWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A6628FF6334002AA41E /* CWriter.swift */; };
+		70DB8A692900792B002AA41E /* E+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A682900792B002AA41E /* E+List.swift */; };
+		70DB8A6B29007E98002AA41E /* list.yml in Resources */ = {isa = PBXBuildFile; fileRef = 70DB8A6A29007E98002AA41E /* list.yml */; };
+		70DB8A6D29008224002AA41E /* Sugar+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A6C29008224002AA41E /* Sugar+List.swift */; };
+		70DB8A6E29008467002AA41E /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A6228FF5810002AA41E /* input.c */; };
+		70DB8A7029008EE9002AA41E /* Sugar+AppendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A6F29008EE9002AA41E /* Sugar+AppendList.swift */; };
+		70DB8A74290096C2002AA41E /* appendList.yml in Resources */ = {isa = PBXBuildFile; fileRef = 70DB8A73290096C2002AA41E /* appendList.yml */; };
+		70DB8A76290097FC002AA41E /* Sugar+HeadList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A75290097FC002AA41E /* Sugar+HeadList.swift */; };
+		70DB8A7829009D60002AA41E /* Sugar+TailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A7729009D60002AA41E /* Sugar+TailList.swift */; };
 		70EFDB5428EF548A00087CAA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDB5328EF548A00087CAA /* main.swift */; };
 		70EFDB7C28EF5A6C00087CAA /* ELogic.docc in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDB7B28EF5A6C00087CAA /* ELogic.docc */; };
 		70EFDB8228EF5A6D00087CAA /* ELogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EFDB7828EF5A6C00087CAA /* ELogic.framework */; };
@@ -88,6 +96,14 @@
 		70DB8A6228FF5810002AA41E /* input.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = input.c; sourceTree = "<group>"; };
 		70DB8A6428FF5CFB002AA41E /* sugarInput.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sugarInput.c; sourceTree = "<group>"; };
 		70DB8A6628FF6334002AA41E /* CWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWriter.swift; sourceTree = "<group>"; };
+		70DB8A682900792B002AA41E /* E+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+List.swift"; sourceTree = "<group>"; };
+		70DB8A6A29007E98002AA41E /* list.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = list.yml; sourceTree = "<group>"; };
+		70DB8A6C29008224002AA41E /* Sugar+List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+List.swift"; sourceTree = "<group>"; };
+		70DB8A6F29008EE9002AA41E /* Sugar+AppendList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+AppendList.swift"; sourceTree = "<group>"; };
+		70DB8A7129008F8B002AA41E /* list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = list.c; sourceTree = "<group>"; };
+		70DB8A73290096C2002AA41E /* appendList.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = appendList.yml; sourceTree = "<group>"; };
+		70DB8A75290097FC002AA41E /* Sugar+HeadList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+HeadList.swift"; sourceTree = "<group>"; };
+		70DB8A7729009D60002AA41E /* Sugar+TailList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+TailList.swift"; sourceTree = "<group>"; };
 		70EFDB5028EF548A00087CAA /* Expressions */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Expressions; sourceTree = BUILT_PRODUCTS_DIR; };
 		70EFDB5328EF548A00087CAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		70EFDB5B28EF54C200087CAA /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
@@ -146,6 +162,10 @@
 				70DB8A4C28FE0BE8002AA41E /* Sugar+Add.swift */,
 				70DB8A4E28FE0F6D002AA41E /* Sugar+Subtract.swift */,
 				70DB8A5028FE1036002AA41E /* Sugar+Neg.swift */,
+				70DB8A6C29008224002AA41E /* Sugar+List.swift */,
+				70DB8A6F29008EE9002AA41E /* Sugar+AppendList.swift */,
+				70DB8A75290097FC002AA41E /* Sugar+HeadList.swift */,
+				70DB8A7729009D60002AA41E /* Sugar+TailList.swift */,
 				70DB8A5228FE1192002AA41E /* Sugar+Multiplication.swift */,
 				70DB8A5C28FF41AC002AA41E /* Sugar+ToInt.swift */,
 				70DB8A5E28FF41B7002AA41E /* Sugar+ToFloat.swift */,
@@ -189,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				70EFDB5E28EF54EB00087CAA /* MInt.swift */,
+				70DB8A682900792B002AA41E /* E+List.swift */,
 				70EFDB9928EF5FF600087CAA /* MBool.swift */,
 				70EFDBB428FC9EE900087CAA /* MFloat.swift */,
 			);
@@ -268,8 +289,11 @@
 		70EFDBA828FC8AE500087CAA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				70DB8A7129008F8B002AA41E /* list.c */,
 				70EFDB9E28F8BFF800087CAA /* YMLReader.swift */,
 				70EFDBA028F8C13000087CAA /* input.yml */,
+				70DB8A6A29007E98002AA41E /* list.yml */,
+				70DB8A73290096C2002AA41E /* appendList.yml */,
 				70DB8A6228FF5810002AA41E /* input.c */,
 				70DB8A6428FF5CFB002AA41E /* sugarInput.c */,
 				70DB8A5828FF2915002AA41E /* sugarInput.yml */,
@@ -409,6 +433,8 @@
 			files = (
 				70DB8A5928FF2915002AA41E /* sugarInput.yml in Resources */,
 				70EFDBAC28FC8BD100087CAA /* input.yml in Resources */,
+				70DB8A74290096C2002AA41E /* appendList.yml in Resources */,
+				70DB8A6B29007E98002AA41E /* list.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,13 +463,19 @@
 				70DB8A4F28FE0F6D002AA41E /* Sugar+Subtract.swift in Sources */,
 				70DB8A5D28FF41AC002AA41E /* Sugar+ToInt.swift in Sources */,
 				70EFDB7C28EF5A6C00087CAA /* ELogic.docc in Sources */,
+				70DB8A7029008EE9002AA41E /* Sugar+AppendList.swift in Sources */,
 				70EFDBAE28FC97D200087CAA /* MError.swift in Sources */,
+				70DB8A6D29008224002AA41E /* Sugar+List.swift in Sources */,
 				70EFDB9A28EF5FF600087CAA /* MBool.swift in Sources */,
 				70DB8A5B28FF2D30002AA41E /* Sugar+Bool.swift in Sources */,
+				70DB8A7829009D60002AA41E /* Sugar+TailList.swift in Sources */,
 				70EFDB9328EF5AC600087CAA /* MMultiplication.swift in Sources */,
+				70DB8A6E29008467002AA41E /* input.c in Sources */,
+				70DB8A692900792B002AA41E /* E+List.swift in Sources */,
 				70DB8A4D28FE0BE8002AA41E /* Sugar+Add.swift in Sources */,
 				70EFDBA628FC8AB400087CAA /* Parser.swift in Sources */,
 				70EFDBB928FCA45800087CAA /* MToInt.swift in Sources */,
+				70DB8A76290097FC002AA41E /* Sugar+HeadList.swift in Sources */,
 				70EFDB9028EF5AA400087CAA /* Expression.swift in Sources */,
 				70DB8A5328FE1192002AA41E /* Sugar+Multiplication.swift in Sources */,
 				70DB8A5F28FF41B7002AA41E /* Sugar+ToFloat.swift in Sources */,

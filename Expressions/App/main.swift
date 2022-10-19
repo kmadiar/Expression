@@ -8,13 +8,19 @@ import Foundation
 import ELogic
 import Yams
 
-let inputs = ["input",
-              "sugarInput"]
-
-let ymlReader = YMLReader()
 let cWriter = CWriter()
+let ymlReader = YMLReader()
 
-func handle(_ input: String) {
+let listInputs = [("list", cWriter.makeListOutput),
+                  ("appendList", cWriter.makeListOutput)]
+
+let mathInputs = [("input", cWriter.makeEOutput),
+                  ("sugarInput", cWriter.makeEOutput)]
+
+let inputs = listInputs + mathInputs
+
+func handle(_ input: String,
+            handleFunction: (String) -> String) {
     print("              ")
     print("______________")
     print("\(input).yml")
@@ -29,7 +35,7 @@ func handle(_ input: String) {
         let parser: ELogic.Parser = ParserImplementation()
         let expression = try parser.parse(yaml)
 
-        let cOutput = cWriter.makeCOutput(expression.deSugarC())
+        let cOutput = handleFunction(expression.deSugarC())
         try cWriter.create(input, content: cOutput)
 
         print(expression.deSugar().eval())
@@ -42,4 +48,4 @@ func handle(_ input: String) {
     print("              ")
 }
 
-inputs.forEach(handle)
+listInputs.forEach(handle)

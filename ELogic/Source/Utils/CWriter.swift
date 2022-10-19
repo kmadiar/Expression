@@ -10,7 +10,7 @@ import Foundation
 public final class CWriter {
     public init() {}
 
-    public func makeCOutput(_ input: String) -> String {
+    public func makeEOutput(_ input: String) -> String {
     """
     #include <stdio.h>
 
@@ -22,9 +22,19 @@ public final class CWriter {
     """
     }
 
+    public func makeListOutput(_ input: String) -> String {
+    """
+    #include <stdio.h>
+
+    int main() {
+        \(input);
+    }
+    """
+    }
+
     public func create(_ fileName: String, content: String) throws {
         let filePath = NSHomeDirectory() + "/Documents/" + fileName + ".c"
         let url = URL(fileURLWithPath: filePath)
-        try makeCOutput(content).write(to: url, atomically: true, encoding: .utf8)
+        try content.write(to: url, atomically: true, encoding: .utf8)
     }
 }
