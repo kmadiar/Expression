@@ -23,7 +23,7 @@ extension Sugar.Bool: SugarExpression {
     }
 
     public func deSugar() -> Expression {
-        MBool(value: value)
+        E.Bool(value: value)
     }
 }
 

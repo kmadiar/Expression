@@ -26,7 +26,7 @@ private extension ParserImplementation {
     func parseList(_ input: Any) throws -> SugarExpression {
         if var input = input as? Array<Any> {
             guard let operation = input.first as? String else {
-                throw MError.emptyList
+                throw E.Error.emptyList
             }
             input.removeFirst()
             switch operation {
@@ -61,11 +61,11 @@ private extension ParserImplementation {
             case "float_mul":
                 return try handleFloatMultiplication(input)
             default:
-                throw MError.unknownOperation
+                throw E.Error.unknownOperation
             }
         }
 
-        throw MError.unknownOperation
+        throw E.Error.unknownOperation
     }
 }
 
@@ -160,7 +160,7 @@ private extension ParserImplementation {
 
     func argumentCountCheck(_ input: Array<Any>, count: Int) throws {
         guard input.count == count else {
-            throw MError.wrongArgumentsCount
+            throw E.Error.wrongArgumentsCount
         }
     }
 

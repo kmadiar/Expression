@@ -7,15 +7,17 @@
 
 import Foundation
 
-public struct MFloat {
-    public let value: Float
+public extension E {
+    struct Float {
+        public let value: Swift.Float
 
-    public init(value: Float) {
-        self.value = value
+        public init(value: Swift.Float) {
+            self.value = value
+        }
     }
 }
 
-extension MFloat: Expression {
+extension E.Float: Expression {
     public func unparse() -> Any {
         value
     }
@@ -25,7 +27,7 @@ extension MFloat: Expression {
     }
 }
 
-extension MFloat {
+extension E.Float {
     static func + (lhs: Self, rhs: Self) -> Self {
         .init(value: lhs.value + rhs.value)
     }

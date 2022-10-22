@@ -21,9 +21,9 @@ public extension Sugar {
 
 // MARK: - Expression conformance
 extension Sugar.TailList: SugarExpression {
-    func takeValue() throws -> MInt {
+    func takeValue() throws -> E.Int {
         let value = value.deSugar().eval() as! E.List
-        return value.value.last!.eval() as! MInt
+        return value.value.last!.eval() as! E.Int
     }
 
     // TODO: - add errors, remove force unwrap

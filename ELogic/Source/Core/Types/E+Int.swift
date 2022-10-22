@@ -7,15 +7,17 @@
 
 import Foundation
 
-public struct MInt {
-    public let value: Int
+public extension E {
+    struct Int {
+        public let value: Swift.Int
 
-    public init(value: Int) {
-        self.value = value
+        public init(value: Swift.Int) {
+            self.value = value
+        }
     }
 }
 
-extension MInt: Expression {
+extension E.Int: Expression {
     public func unparse() -> Any {
         value
     }
@@ -26,14 +28,14 @@ extension MInt: Expression {
 }
 
 // MARK: - Conform + / - Arithmetic
-public extension MInt {
+public extension E.Int {
     static func + (lhs: Self, rhs: Self) -> Self {
         .init(value: lhs.value + rhs.value)
     }
 }
 
 // MARK: - add multiplication
-public extension MInt {
+public extension E.Int {
     static func * (lhs: Self, rhs: Self) -> Self {
         .init(value: lhs.value * rhs.value)
     }

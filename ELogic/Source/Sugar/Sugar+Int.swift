@@ -23,7 +23,7 @@ extension Sugar.Integer: SugarExpression {
     }
 
     public func deSugar() -> Expression {
-        MInt(value: value)
+        E.Int(value: value)
     }
 }
 

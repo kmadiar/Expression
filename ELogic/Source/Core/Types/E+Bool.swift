@@ -7,15 +7,17 @@
 
 import Foundation
 
-public struct MBool {
-    public let value: Bool
+public extension E {
+    struct Bool {
+        public let value: Swift.Bool
 
-    public init(value: Bool) {
-        self.value = value
+        public init(value: Swift.Bool) {
+            self.value = value
+        }
     }
 }
 
-extension MBool: Expression {
+extension E.Bool: Expression {
     public func unparse() -> Any {
         value
     }
@@ -25,7 +27,7 @@ extension MBool: Expression {
     }
 }
 
-extension MBool {
+extension E.Bool {
     static func + (lhs: Self, rhs: Self) -> Self {
         .init(value: lhs.value || rhs.value)
     }
