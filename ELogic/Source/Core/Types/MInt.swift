@@ -26,17 +26,9 @@ extension MInt: Expression {
 }
 
 // MARK: - Conform + / - Arithmetic
-extension MInt: AdditiveArithmetic {
-    public static func - (lhs: MInt, rhs: MInt) -> MInt {
-        .init(value: lhs.value - rhs.value)
-    }
-
-    public static func + (lhs: MInt, rhs: MInt) -> MInt {
+public extension MInt {
+    static func + (lhs: Self, rhs: Self) -> Self {
         .init(value: lhs.value + rhs.value)
-    }
-
-    public static var zero: MInt {
-        .init(value: 0)
     }
 }
 

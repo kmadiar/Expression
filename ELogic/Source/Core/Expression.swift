@@ -7,6 +7,8 @@
 
 import Foundation
 
+public enum E {}
+
 public protocol Expression {
     func eval() -> Expression
     func unparse() -> Any

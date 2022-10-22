@@ -8,19 +8,44 @@ import Foundation
 import ELogic
 import Yams
 
-do {
-    guard let content = try? YMLReader().read(),
-          let yaml = try? Yams.load(yaml: content) else {
-        throw MError.badInput
+let cWriter = CWriter()
+let ymlReader = YMLReader()
+
+let listInputs = [("list", cWriter.makeListOutput),
+                  ("appendList", cWriter.makeListOutput)]
+
+let mathInputs = [("input", cWriter.makeEOutput),
+                  ("sugarInput", cWriter.makeEOutput)]
+
+let inputs = listInputs + mathInputs
+
+func handle(_ input: String,
+            handleFunction: (String) -> String) {
+    print("              ")
+    print("______________")
+    print("\(input).yml")
+    print("              ")
+
+    do {
+        guard let content = try? ymlReader.read(fileName: input),
+              let yaml = try? Yams.load(yaml: content) else {
+            throw MError.badInput
+        }
+
+        let parser: ELogic.Parser = ParserImplementation()
+        let expression = try parser.parse(yaml)
+
+        let cOutput = handleFunction(expression.deSugarC())
+        try cWriter.create(input, content: cOutput)
+
+        print(expression.deSugar().eval())
+        print(cOutput)
+    } catch {
+        print(error)
     }
 
-    let parser: Parser = ParserImplementation()
-
-    let expression = try parser.parse(yaml)
-
-    print(expression)
-    print(expression.eval())
-    print(expression.unparse())
-} catch {
-    print(error)
+    print("______________")
+    print("              ")
 }
+
+listInputs.forEach(handle)

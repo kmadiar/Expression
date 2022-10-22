@@ -8,13 +8,13 @@
 import Foundation
 
 public protocol Parser {
-    func parse(_ input: Any) throws -> Expression
+    func parse(_ input: Any) throws -> SugarExpression
 }
 
 public class ParserImplementation: Parser {
     public init() {}
 
-    public func parse(_ input: Any) throws -> Expression {
+    public func parse(_ input: Any) throws -> SugarExpression {
         if let type = parseType(input: input) {
             return type
         }
@@ -23,7 +23,7 @@ public class ParserImplementation: Parser {
 }
 
 private extension ParserImplementation {
-    func parseList(_ input: Any) throws -> Expression {
+    func parseList(_ input: Any) throws -> SugarExpression {
         if var input = input as? Array<Any> {
             guard let operation = input.first as? String else {
                 throw MError.emptyList
@@ -32,8 +32,22 @@ private extension ParserImplementation {
             switch operation {
             case "add":
                 return try handleAdd(input)
+            case "sum":
+                return try handleSum(input)
             case "mul":
                 return try handleMultiplication(input)
+            case "sub":
+                return try handleSubtract(input)
+            case "neg":
+                return try handleNegation(input)
+            case "list":
+                return try handleList(input)
+            case "append_list":
+                return try handleAppendList(input)
+            case "head_list":
+                return try handleHeadList(input)
+            case "tail_list":
+                return try handleTailList(input)
             case "to_int":
                 return try handleToInt(input)
             case "to_float":
@@ -57,49 +71,89 @@ private extension ParserImplementation {
 
 // MARK: - Parse operations
 private extension ParserImplementation {
-    func handleAdd(_ input: Array<Any>) throws -> Expression {
-        try MAdd(twoArguments(input))
+    // MARK: - list
+    func handleList(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.List(value: input.map(parse))
     }
 
-    func handleIntAdd(_ input: Array<Any>) throws -> Expression {
-        try MIntAdd(twoArguments(input))
+    func handleAppendList(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.AppendList(twoArguments(input))
     }
 
-    func handleFloatAdd(_ input: Array<Any>) throws -> Expression {
-        try MFloatAdd(twoArguments(input))
+    func handleHeadList(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.HeadList(value: singleArgument(input))
     }
 
-    func handleMultiplication(_ input: Array<Any>) throws -> Expression {
-        try MMultiplication(twoArguments(input))
+    func handleTailList(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.TailList(value: singleArgument(input))
     }
 
-    func handleIntMultiplication(_ input: Array<Any>) throws -> Expression {
-        try MIntMul(twoArguments(input))
+    // MARK: - negation
+    func handleNegation(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.Neg(value: singleArgument(input))
+    }
+    // MARK: - subtraction
+    func handleSubtract(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.Subtract(twoArguments(input))
     }
 
-    func handleFloatMultiplication(_ input: Array<Any>) throws -> Expression {
-        try MFloatMul(twoArguments(input))
+    // MARK: - addition
+    func handleSum(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.Sum(input.map(parse))
     }
 
-    func handleToInt(_ input: Array<Any>) throws -> Expression {
-        try MToInt(value: singleArgument(input))
+    func handleAdd(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.Add(twoArguments(input))
     }
 
-    func handleToFloat(_ input: Array<Any>) throws -> Expression {
-        try MToFloat(value: singleArgument(input))
+    func handleIntAdd(_ input: Array<Any>) throws -> SugarExpression {
+        var operation = try Sugar.Add(twoArguments(input))
+        operation.typeHelper = .int
+        return operation
+    }
+
+    func handleFloatAdd(_ input: Array<Any>) throws -> SugarExpression {
+        var operation = try Sugar.Add(twoArguments(input))
+        operation.typeHelper = .float
+        return operation
+    }
+
+    // MARK: - Mupltiplication
+    func handleMultiplication(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.Multiplication(twoArguments(input))
+    }
+
+    func handleIntMultiplication(_ input: Array<Any>) throws -> SugarExpression {
+        var operation = try Sugar.Multiplication(twoArguments(input))
+        operation.typeHelper = .int
+        return operation
+    }
+
+    func handleFloatMultiplication(_ input: Array<Any>) throws -> SugarExpression {
+        var operation = try Sugar.Multiplication(twoArguments(input))
+        operation.typeHelper = .float
+        return operation
+    }
+
+    func handleToInt(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.ToInt(value: singleArgument(input))
+    }
+
+    func handleToFloat(_ input: Array<Any>) throws -> SugarExpression {
+        try Sugar.ToFloat(value: singleArgument(input))
     }
 }
 
 // MARK: - Parse types
 private extension ParserImplementation {
-    func twoArguments(_ input: Array<Any>) throws -> (Expression, Expression) {
+    func twoArguments(_ input: Array<Any>) throws -> (SugarExpression, SugarExpression) {
         try argumentCountCheck(input, count: 2)
         let left = try parse(input[0])
         let right = try parse(input[1])
         return (left, right)
     }
 
-    func singleArgument(_ input: Array<Any>) throws -> Expression {
+    func singleArgument(_ input: Array<Any>) throws -> SugarExpression {
         try argumentCountCheck(input, count: 1)
         return try parse(input[0])
     }
@@ -110,31 +164,31 @@ private extension ParserImplementation {
         }
     }
 
-    func parseType( input: Any) -> Expression? {
+    func parseType( input: Any) -> SugarExpression? {
         parseInt(input) ??
         parseFloat(input) ??
         parseBool(input) ??
         nil
     }
 
-    func parseBool(_ input: Any) -> Expression? {
+    func parseBool(_ input: Any) -> SugarExpression? {
         if let input = input as? Bool {
-            return MBool(value: input)
+            return Sugar.Bool(value: input)
         }
 
         return nil
     }
 
-    func parseInt(_ input: Any) -> Expression? {
+    func parseInt(_ input: Any) -> SugarExpression? {
         if let input = input as? Int {
-            return MInt(value: input)
+            return Sugar.Integer(value: input)
         }
         return nil
     }
 
-    func parseFloat(_ input: Any) -> Expression? {
+    func parseFloat(_ input: Any) -> SugarExpression? {
         if let input = input as? Double {
-            return MFloat(value: Float(input))
+            return Sugar.Float(value: Float(input))
         }
 
         return nil
