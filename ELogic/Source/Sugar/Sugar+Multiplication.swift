@@ -50,6 +50,6 @@ extension Sugar.Multiplication: SugarExpression {
             left = self.left
             right = self.right
         }
-        return MMultiplication(left: left.deSugar(), right: right.deSugar())
+        return E.Multiplication(left: left.deSugar(), right: right.deSugar())
     }
 }

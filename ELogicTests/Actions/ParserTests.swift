@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import ELogic
 
-class MParserTests: XCTestCase {
+class ParserTests: XCTestCase {
     func testFloatMul() throws {
         let parer = ParserImplementation()
 

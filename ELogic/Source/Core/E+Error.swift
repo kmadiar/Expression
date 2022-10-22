@@ -7,14 +7,16 @@
 
 import Foundation
 
-public enum MError: Error {
-    case wrongArgumentsCount
-    case emptyList
-    case unknownOperation
-    case badInput
+public extension E {
+    enum Error: Swift.Error {
+        case wrongArgumentsCount
+        case emptyList
+        case unknownOperation
+        case badInput
+    }
 }
 
-extension MError: CustomDebugStringConvertible {
+extension E.Error: CustomDebugStringConvertible {
     public var debugDescription: String {
         switch self {
         case .wrongArgumentsCount:

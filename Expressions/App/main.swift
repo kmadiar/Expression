@@ -29,7 +29,7 @@ func handle(_ input: String,
     do {
         guard let content = try? ymlReader.read(fileName: input),
               let yaml = try? Yams.load(yaml: content) else {
-            throw MError.badInput
+            throw E.Error.badInput
         }
 
         let parser: ELogic.Parser = ParserImplementation()

@@ -23,7 +23,7 @@ extension Sugar.Float: SugarExpression {
     }
 
     public func deSugar() -> Expression {
-        MFloat(value: value)
+        E.Float(value: value)
     }
 }
 

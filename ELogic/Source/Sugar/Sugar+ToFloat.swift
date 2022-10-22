@@ -25,6 +25,6 @@ extension Sugar.ToFloat: SugarExpression {
     }
 
     public func deSugar() -> Expression {
-        MToFloat(value: value.deSugar())
+        E.ToFloat(value: value.deSugar())
     }
 }

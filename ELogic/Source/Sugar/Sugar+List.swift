@@ -44,7 +44,7 @@ extension Sugar.List: SugarExpression {
 
     func typeAnnotation() -> String {
         let unwrapped = value.map { $0.deSugar().eval() }
-        if unwrapped as? Array<MInt> != nil {
+        if unwrapped as? Array<E.Int> != nil {
             return "int"
         }
 

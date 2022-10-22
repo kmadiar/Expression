@@ -30,7 +30,7 @@ extension Sugar.Subtract: SugarExpression {
     }
 
     public func deSugar() -> Expression {
-        MAdd(left: left.deSugar(),
-             right: Sugar.Neg(value: right).deSugar())
+        E.Add(left: left.deSugar(),
+              right: Sugar.Neg(value: right).deSugar())
     }
 }
