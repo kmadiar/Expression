@@ -39,7 +39,7 @@ extension Sugar.Sum: SugarExpression {
         eval().deSugarC()
     }
 
-    public func deSugar() -> Expression {
-        eval().deSugar()
+    public func deSugar() throws -> Expression {
+        try eval().deSugar()
     }
 }

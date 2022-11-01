@@ -8,7 +8,7 @@
 import Foundation
 
 //[append, list, element], [head, list], [tail, list], [generate_range, from, to]
-public extension E {
+extension E {
     struct List {
         public let value: Array<Expression>
 
@@ -19,11 +19,12 @@ public extension E {
 }
 
 extension E.List: Expression {
-    public func eval() -> Expression {
-        E.List(value: value.map { $0.eval() })
+    func eval() throws -> Expression {
+        // TODO: - add error propagation
+        E.List(value: try value.map { try $0.eval() })
     }
 
-    public func unparse() -> Any {
+    func unparse() -> Any {
         ["list", value.map { $0.unparse() }]
     }
 }

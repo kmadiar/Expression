@@ -7,16 +7,16 @@
 
 import Foundation
 
-public extension E {
+extension E {
     struct Multiplication {
-        public let left: Expression
-        public let right: Expression
+        let left: Expression
+        let right: Expression
 
-        public init(_ values: (left: Expression, right: Expression)) {
+        init(_ values: (left: Expression, right: Expression)) {
             self.init(left: values.left, right: values.right)
         }
 
-        public init(left: Expression, right: Expression) {
+        init(left: Expression, right: Expression) {
             self.left = left
             self.right = right
         }
@@ -24,50 +24,67 @@ public extension E {
 }
 
 extension E.Multiplication: Expression {
-    public func unparse() -> Any {
+    func unparse() -> Any {
         ["mul", left.unparse(), right.unparse()]
     }
 
-    public func eval() -> Expression {
-        evalEInt() ??
-        evalEFloat() ??
-        evalEBool() ??
-        evalIntFloat() ??
-        self
+    func eval() throws -> Expression {
+        do {
+            if let int = try evalEInt() {
+                return int
+            }
+            if let float = try evalEFloat() {
+                return float
+            }
+            if let bool = try evalEBool() {
+                return bool
+            }
+            if let intFloat = try evalIntFloat() {
+                return intFloat
+            }
+
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: "Multiplication",
+                                           level: error.level + 1))
+        }
+        throw E.Error.wrongArgument(.init(parent: nil,
+                                          input: unparse(),
+                                          level: 0))
     }
 
-    func evalEBool() -> Expression? {
-        if let left = left.eval() as? E.Bool,
-           let right = right.eval() as? E.Bool {
+    func evalEBool() throws -> Expression? {
+        if let left = try left.eval() as? E.Bool,
+           let right = try right.eval() as? E.Bool {
             return left * right
         }
         return nil
     }
 
-    func evalEFloat() -> Expression? {
-        if let left = left.eval() as? E.Float,
-           let right = right.eval() as? E.Float {
+    func evalEFloat() throws -> Expression? {
+        if let left = try left.eval() as? E.Float,
+           let right = try right.eval() as? E.Float {
             return left * right
         }
         return nil
     }
 
-    func evalEInt() -> Expression? {
-        if let multX = left.eval() as? E.Int,
-           let multY = right.eval() as? E.Int {
+    func evalEInt() throws -> Expression? {
+        if let multX = try left.eval() as? E.Int,
+           let multY = try right.eval() as? E.Int {
             return multX * multY
         }
         return nil
     }
 
-    func evalIntFloat() -> Expression? {
-        if let left = left.eval() as? E.Int,
-           let right = right.eval() as? E.Float {
+    func evalIntFloat() throws -> Expression? {
+        if let left = try left.eval() as? E.Int,
+           let right = try right.eval() as? E.Float {
             return E.Float(value: Float(left.value)) * right
         }
 
-        if let left = left.eval() as? E.Float,
-           let right = right.eval() as? E.Int {
+        if let left = try left.eval() as? E.Float,
+           let right = try right.eval() as? E.Int {
             return left * E.Float(value: Float(right.value))
         }
 

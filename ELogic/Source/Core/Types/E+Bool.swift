@@ -7,22 +7,22 @@
 
 import Foundation
 
-public extension E {
+extension E {
     struct Bool {
-        public let value: Swift.Bool
+        let value: Swift.Bool
 
-        public init(value: Swift.Bool) {
+        init(value: Swift.Bool) {
             self.value = value
         }
     }
 }
 
 extension E.Bool: Expression {
-    public func unparse() -> Any {
+    func unparse() -> Any {
         value
     }
 
-    public func eval() -> Expression {
+    func eval() -> Expression {
         self
     }
 }

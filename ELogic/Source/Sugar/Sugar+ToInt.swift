@@ -24,7 +24,7 @@ extension Sugar.ToInt: SugarExpression {
         "(int)\(value.deSugarC())"
     }
 
-    public func deSugar() -> Expression {
-        E.ToInt(value: value.deSugar())
+    public func deSugar() throws -> Expression {
+        E.ToInt(value: try value.deSugar())
     }
 }

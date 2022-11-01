@@ -1,0 +1,12 @@
+[add,
+    3,
+    [add,
+    3,
+        [sum,
+        4,
+        5,
+        [div, 3, 0]]]]
+#Parse error Add
+#        Parse error Add
+#    Parse error Add
+#devision by zero ["div", 3, 0]

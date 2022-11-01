@@ -27,10 +27,10 @@ public extension Sugar {
 // MARK: - Expression conformance
 extension Sugar.AppendList: SugarExpression {
     func extractValues() throws -> [E.Int] {
-        let left = left.deSugar().eval() as! E.List
-        let right = right.deSugar().eval() as! E.Int
+        let left = try left.deSugar().eval() as! E.List
+        let right = try right.deSugar().eval() as! E.Int
 
-        return left.value.map { $0.eval() as! E.Int } + [right]
+        return try left.value.map { try $0.eval() as! E.Int } + [right]
     }
 
     // TODO: - add errors, remove force unwrap

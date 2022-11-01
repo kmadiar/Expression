@@ -29,8 +29,8 @@ extension Sugar.Subtract: SugarExpression {
         "(\(left.deSugarC()) - \(right.deSugarC()))"
     }
 
-    public func deSugar() -> Expression {
-        E.Add(left: left.deSugar(),
-              right: Sugar.Neg(value: right).deSugar())
+    public func deSugar() throws -> Expression {
+        E.Add(left: try left.deSugar(),
+              right: try Sugar.Neg(value: right).deSugar())
     }
 }

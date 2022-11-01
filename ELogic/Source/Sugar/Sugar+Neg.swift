@@ -24,8 +24,8 @@ extension Sugar.Neg: SugarExpression {
         "(-1 * \(value.deSugarC()))"
     }
 
-    public func deSugar() -> Expression {
+    public func deSugar() throws -> Expression {
         E.Multiplication(left: E.Int(value: -1),
-                         right: value.deSugar())
+                         right: try value.deSugar())
     }
 }

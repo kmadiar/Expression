@@ -22,8 +22,8 @@ public extension Sugar {
 // MARK: - Expression conformance
 extension Sugar.HeadList: SugarExpression {
     func takeValue() throws -> E.Int {
-        let value = value.deSugar().eval() as! E.List
-        return value.value.first!.eval() as! E.Int
+        let value = try value.deSugar().eval() as! E.List
+        return try value.value.first!.eval() as! E.Int
     }
 
     // TODO: - add errors, remove force unwrap

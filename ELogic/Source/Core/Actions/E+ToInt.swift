@@ -7,44 +7,59 @@
 
 import Foundation
 
-public extension E {
+extension E {
     struct ToInt {
-        public let value: Expression
+        let value: Expression
 
-        public init(value: Expression) {
+        init(value: Expression) {
             self.value = value
         }
     }
 }
 
 extension E.ToInt: Expression {
-    public func unparse() -> Any {
+    func unparse() -> Any {
         ["to_int", value.unparse()]
     }
 
-    public func eval() -> Expression {
-        evalEInt() ??
-        evalEFloat() ??
-        evalEBool() ??
-        self
+    func eval() throws -> Expression {
+        do {
+            if let int = try evalEInt() {
+                return int
+            }
+            if let float = try evalEFloat() {
+                return float
+            }
+            if let bool = try evalEBool() {
+                return bool
+            }
+
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: "To Int",
+                                           level: error.level + 1))
+        }
+        throw E.Error.wrongArgument(.init(parent: nil,
+                                          input: unparse(),
+                                          level: 0))
     }
 
-    func evalEFloat() -> Expression? {
-        if let value = value.eval() as? E.Float {
+    func evalEFloat() throws -> Expression? {
+        if let value = try value.eval() as? E.Float {
             return E.Int(value: Int(value.value))
         }
         return nil
     }
 
-    func evalEInt() -> Expression? {
-        if let value = value.eval() as? E.Int {
+    func evalEInt() throws -> Expression? {
+        if let value = try value.eval() as? E.Int {
             return value
         }
         return nil
     }
 
-    func evalEBool() -> Expression? {
-        if let value = value.eval() as? E.Bool {
+    func evalEBool() throws -> Expression? {
+        if let value = try value.eval() as? E.Bool {
             return E.Float(value: value.value ? 1.0 : 0.0)
         }
         return nil
