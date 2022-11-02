@@ -37,7 +37,7 @@ extension Sugar.Multiplication: SugarExpression {
         "(\(left.deSugarC()) * \(right.deSugarC()))"
     }
 
-    public func deSugar() -> Expression {
+    public func deSugar() throws -> Expression {
         let left, right: SugarExpression
         switch typeHelper {
         case .int:
@@ -50,6 +50,7 @@ extension Sugar.Multiplication: SugarExpression {
             left = self.left
             right = self.right
         }
-        return E.Multiplication(left: left.deSugar(), right: right.deSugar())
+        return E.Multiplication(left: try left.deSugar(),
+                                right: try right.deSugar())
     }
 }

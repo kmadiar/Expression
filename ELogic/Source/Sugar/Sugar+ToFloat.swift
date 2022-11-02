@@ -24,7 +24,7 @@ extension Sugar.ToFloat: SugarExpression {
         "(float)\(value.deSugarC())"
     }
 
-    public func deSugar() -> Expression {
-        E.ToFloat(value: value.deSugar())
+    public func deSugar() throws -> Expression {
+        E.ToFloat(value: try value.deSugar())
     }
 }

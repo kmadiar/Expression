@@ -28,6 +28,17 @@
 		70DB8A74290096C2002AA41E /* appendList.yml in Resources */ = {isa = PBXBuildFile; fileRef = 70DB8A73290096C2002AA41E /* appendList.yml */; };
 		70DB8A76290097FC002AA41E /* Sugar+HeadList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A75290097FC002AA41E /* Sugar+HeadList.swift */; };
 		70DB8A7829009D60002AA41E /* Sugar+TailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A7729009D60002AA41E /* Sugar+TailList.swift */; };
+		70DB8A7C29108FE8002AA41E /* input_error.yml in Resources */ = {isa = PBXBuildFile; fileRef = 70DB8A7B29108FE8002AA41E /* input_error.yml */; };
+		70DB8A7E29109AFB002AA41E /* E+Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A7D29109AFB002AA41E /* E+Division.swift */; };
+		70DB8A8029109CF2002AA41E /* Sugar+Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A7F29109CF2002AA41E /* Sugar+Division.swift */; };
+		70DB8A8229109FD2002AA41E /* division_by_zero.yml in Resources */ = {isa = PBXBuildFile; fileRef = 70DB8A8129109FD2002AA41E /* division_by_zero.yml */; };
+		70DB8A842910A32E002AA41E /* Sugar+And.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A832910A32E002AA41E /* Sugar+And.swift */; };
+		70DB8A862910A337002AA41E /* Sugar+Or.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A852910A337002AA41E /* Sugar+Or.swift */; };
+		70DB8A882910A33F002AA41E /* Sugar+Not.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A872910A33F002AA41E /* Sugar+Not.swift */; };
+		70DB8A8A2910A7A5002AA41E /* Sugar+Gt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A892910A7A5002AA41E /* Sugar+Gt.swift */; };
+		70DB8A8C2911AB23002AA41E /* Sugar+Lt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A8B2911AB23002AA41E /* Sugar+Lt.swift */; };
+		70DB8A8E2911C050002AA41E /* E+IsZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A8D2911C050002AA41E /* E+IsZero.swift */; };
+		70DB8A902911C1C5002AA41E /* Sugar+IsZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A8F2911C1C5002AA41E /* Sugar+IsZero.swift */; };
 		70EFDB5428EF548A00087CAA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDB5328EF548A00087CAA /* main.swift */; };
 		70EFDB7C28EF5A6C00087CAA /* ELogic.docc in Sources */ = {isa = PBXBuildFile; fileRef = 70EFDB7B28EF5A6C00087CAA /* ELogic.docc */; };
 		70EFDB8228EF5A6D00087CAA /* ELogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EFDB7828EF5A6C00087CAA /* ELogic.framework */; };
@@ -104,6 +115,17 @@
 		70DB8A73290096C2002AA41E /* appendList.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = appendList.yml; sourceTree = "<group>"; };
 		70DB8A75290097FC002AA41E /* Sugar+HeadList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+HeadList.swift"; sourceTree = "<group>"; };
 		70DB8A7729009D60002AA41E /* Sugar+TailList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+TailList.swift"; sourceTree = "<group>"; };
+		70DB8A7B29108FE8002AA41E /* input_error.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = input_error.yml; sourceTree = "<group>"; };
+		70DB8A7D29109AFB002AA41E /* E+Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+Division.swift"; sourceTree = "<group>"; };
+		70DB8A7F29109CF2002AA41E /* Sugar+Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Division.swift"; sourceTree = "<group>"; };
+		70DB8A8129109FD2002AA41E /* division_by_zero.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = division_by_zero.yml; sourceTree = "<group>"; };
+		70DB8A832910A32E002AA41E /* Sugar+And.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+And.swift"; sourceTree = "<group>"; };
+		70DB8A852910A337002AA41E /* Sugar+Or.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Or.swift"; sourceTree = "<group>"; };
+		70DB8A872910A33F002AA41E /* Sugar+Not.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Not.swift"; sourceTree = "<group>"; };
+		70DB8A892910A7A5002AA41E /* Sugar+Gt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Gt.swift"; sourceTree = "<group>"; };
+		70DB8A8B2911AB23002AA41E /* Sugar+Lt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Lt.swift"; sourceTree = "<group>"; };
+		70DB8A8D2911C050002AA41E /* E+IsZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+IsZero.swift"; sourceTree = "<group>"; };
+		70DB8A8F2911C1C5002AA41E /* Sugar+IsZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+IsZero.swift"; sourceTree = "<group>"; };
 		70EFDB5028EF548A00087CAA /* Expressions */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Expressions; sourceTree = BUILT_PRODUCTS_DIR; };
 		70EFDB5328EF548A00087CAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		70EFDB5B28EF54C200087CAA /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
@@ -160,12 +182,19 @@
 			children = (
 				70DB8A4A28FE0BBB002AA41E /* SugarExpression.swift */,
 				70DB8A4C28FE0BE8002AA41E /* Sugar+Add.swift */,
+				70DB8A892910A7A5002AA41E /* Sugar+Gt.swift */,
+				70DB8A8B2911AB23002AA41E /* Sugar+Lt.swift */,
+				70DB8A832910A32E002AA41E /* Sugar+And.swift */,
+				70DB8A852910A337002AA41E /* Sugar+Or.swift */,
+				70DB8A872910A33F002AA41E /* Sugar+Not.swift */,
 				70DB8A4E28FE0F6D002AA41E /* Sugar+Subtract.swift */,
 				70DB8A5028FE1036002AA41E /* Sugar+Neg.swift */,
+				70DB8A7F29109CF2002AA41E /* Sugar+Division.swift */,
 				70DB8A6C29008224002AA41E /* Sugar+List.swift */,
 				70DB8A6F29008EE9002AA41E /* Sugar+AppendList.swift */,
 				70DB8A75290097FC002AA41E /* Sugar+HeadList.swift */,
 				70DB8A7729009D60002AA41E /* Sugar+TailList.swift */,
+				70DB8A8F2911C1C5002AA41E /* Sugar+IsZero.swift */,
 				70DB8A5228FE1192002AA41E /* Sugar+Multiplication.swift */,
 				70DB8A5C28FF41AC002AA41E /* Sugar+ToInt.swift */,
 				70DB8A5E28FF41B7002AA41E /* Sugar+ToFloat.swift */,
@@ -221,7 +250,9 @@
 			children = (
 				70EFDB6128EF555A00087CAA /* E+Add.swift */,
 				70EFDB6328EF556D00087CAA /* E+Multiplication.swift */,
+				70DB8A7D29109AFB002AA41E /* E+Division.swift */,
 				70EFDBB628FCA35400087CAA /* E+ToFloat.swift */,
+				70DB8A8D2911C050002AA41E /* E+IsZero.swift */,
 				70EFDBB828FCA45800087CAA /* E+ToInt.swift */,
 			);
 			path = Actions;
@@ -292,6 +323,8 @@
 				70DB8A7129008F8B002AA41E /* list.c */,
 				70EFDB9E28F8BFF800087CAA /* YMLReader.swift */,
 				70EFDBA028F8C13000087CAA /* input.yml */,
+				70DB8A7B29108FE8002AA41E /* input_error.yml */,
+				70DB8A8129109FD2002AA41E /* division_by_zero.yml */,
 				70DB8A6A29007E98002AA41E /* list.yml */,
 				70DB8A73290096C2002AA41E /* appendList.yml */,
 				70DB8A6228FF5810002AA41E /* input.c */,
@@ -431,8 +464,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70DB8A8229109FD2002AA41E /* division_by_zero.yml in Resources */,
 				70DB8A5928FF2915002AA41E /* sugarInput.yml in Resources */,
 				70EFDBAC28FC8BD100087CAA /* input.yml in Resources */,
+				70DB8A7C29108FE8002AA41E /* input_error.yml in Resources */,
 				70DB8A74290096C2002AA41E /* appendList.yml in Resources */,
 				70DB8A6B29007E98002AA41E /* list.yml in Resources */,
 			);
@@ -460,9 +495,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70DB8A7E29109AFB002AA41E /* E+Division.swift in Sources */,
 				70DB8A4F28FE0F6D002AA41E /* Sugar+Subtract.swift in Sources */,
+				70DB8A8E2911C050002AA41E /* E+IsZero.swift in Sources */,
 				70DB8A5D28FF41AC002AA41E /* Sugar+ToInt.swift in Sources */,
 				70EFDB7C28EF5A6C00087CAA /* ELogic.docc in Sources */,
+				70DB8A882910A33F002AA41E /* Sugar+Not.swift in Sources */,
 				70DB8A7029008EE9002AA41E /* Sugar+AppendList.swift in Sources */,
 				70EFDBAE28FC97D200087CAA /* E+Error.swift in Sources */,
 				70DB8A6D29008224002AA41E /* Sugar+List.swift in Sources */,
@@ -470,13 +508,16 @@
 				70DB8A5B28FF2D30002AA41E /* Sugar+Bool.swift in Sources */,
 				70DB8A7829009D60002AA41E /* Sugar+TailList.swift in Sources */,
 				70EFDB9328EF5AC600087CAA /* E+Multiplication.swift in Sources */,
+				70DB8A8029109CF2002AA41E /* Sugar+Division.swift in Sources */,
 				70DB8A6E29008467002AA41E /* input.c in Sources */,
 				70DB8A692900792B002AA41E /* E+List.swift in Sources */,
 				70DB8A4D28FE0BE8002AA41E /* Sugar+Add.swift in Sources */,
 				70EFDBA628FC8AB400087CAA /* Parser.swift in Sources */,
 				70EFDBB928FCA45800087CAA /* E+ToInt.swift in Sources */,
 				70DB8A76290097FC002AA41E /* Sugar+HeadList.swift in Sources */,
+				70DB8A842910A32E002AA41E /* Sugar+And.swift in Sources */,
 				70EFDB9028EF5AA400087CAA /* Expression.swift in Sources */,
+				70DB8A8A2910A7A5002AA41E /* Sugar+Gt.swift in Sources */,
 				70DB8A5328FE1192002AA41E /* Sugar+Multiplication.swift in Sources */,
 				70DB8A5F28FF41B7002AA41E /* Sugar+ToFloat.swift in Sources */,
 				70EFDB9128EF5ABC00087CAA /* E+Int.swift in Sources */,
@@ -484,12 +525,15 @@
 				70DB8A5128FE1036002AA41E /* Sugar+Neg.swift in Sources */,
 				70EFDB9228EF5AC200087CAA /* E+Add.swift in Sources */,
 				70DB8A5528FE13CB002AA41E /* Sugar+Int.swift in Sources */,
+				70DB8A902911C1C5002AA41E /* Sugar+IsZero.swift in Sources */,
 				70EFDBAB28FC8BCC00087CAA /* YMLReader.swift in Sources */,
 				70DB8A4B28FE0BBB002AA41E /* SugarExpression.swift in Sources */,
 				70DB8A6128FF4698002AA41E /* Sugar+Sum.swift in Sources */,
 				70DB8A5728FE172B002AA41E /* Sugar+Float.swift in Sources */,
+				70DB8A862910A337002AA41E /* Sugar+Or.swift in Sources */,
 				70DB8A6728FF6334002AA41E /* CWriter.swift in Sources */,
 				70EFDBB528FC9EE900087CAA /* E+Float.swift in Sources */,
+				70DB8A8C2911AB23002AA41E /* Sugar+Lt.swift in Sources */,
 				70EFDBB328FC980D00087CAA /* Collection+Subscript.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

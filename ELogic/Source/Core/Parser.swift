@@ -24,48 +24,65 @@ public class ParserImplementation: Parser {
 
 private extension ParserImplementation {
     func parseList(_ input: Any) throws -> SugarExpression {
-        if var input = input as? Array<Any> {
-            guard let operation = input.first as? String else {
-                throw E.Error.emptyList
+        if var localInput = input as? Array<Any> {
+            guard let operation = localInput.first as? String else {
+                throw E.Error.emptyList(.init(parent: nil,
+                                              input: localInput, level: 0))
             }
-            input.removeFirst()
+            localInput.removeFirst()
             switch operation {
+            case "and":
+                return try handleAnd(localInput)
+            case "or":
+                return try handleOr(localInput)
+            case "not":
+                return try handleNot(localInput)
             case "add":
-                return try handleAdd(input)
+                return try handleAdd(localInput)
             case "sum":
-                return try handleSum(input)
+                return try handleSum(localInput)
             case "mul":
-                return try handleMultiplication(input)
+                return try handleMultiplication(localInput)
+            case "div":
+                return try handleDivision(localInput)
             case "sub":
-                return try handleSubtract(input)
+                return try handleSubtract(localInput)
             case "neg":
-                return try handleNegation(input)
+                return try handleNegation(localInput)
             case "list":
-                return try handleList(input)
+                return try handleList(localInput)
             case "append_list":
-                return try handleAppendList(input)
+                return try handleAppendList(localInput)
             case "head_list":
-                return try handleHeadList(input)
+                return try handleHeadList(localInput)
             case "tail_list":
-                return try handleTailList(input)
+                return try handleTailList(localInput)
             case "to_int":
-                return try handleToInt(input)
+                return try handleToInt(localInput)
             case "to_float":
-                return try handleToFloat(input)
+                return try handleToFloat(localInput)
             case "int_add":
-                return try handleIntAdd(input)
+                return try handleIntAdd(localInput)
             case "float_add":
-                return try handleFloatAdd(input)
+                return try handleFloatAdd(localInput)
             case "int_mul":
-                return try handleIntMultiplication(input)
+                return try handleIntMultiplication(localInput)
             case "float_mul":
-                return try handleFloatMultiplication(input)
+                return try handleFloatMultiplication(localInput)
+            case "is_zero":
+                return try handleIsZero(localInput)
+            case "lt":
+                return try handleLt(localInput)
+            case "gt":
+                return try handleGt(localInput)
             default:
-                throw E.Error.unknownOperation
+                throw E.Error.unknownOperation(.init(parent: nil,
+                                                     input: operation, level: 0))
             }
         }
 
-        throw E.Error.unknownOperation
+        throw E.Error.unknownType(.init(parent: nil,
+                                        input: input, level: 0))
     }
 }
 
@@ -73,74 +90,215 @@ private extension ParserImplementation {
 private extension ParserImplementation {
     // MARK: - list
     func handleList(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.List(value: input.map(parse))
+        do {
+            return try Sugar.List(value: input.map(parse))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.List.self, level: error.level + 1))
+        }
     }
 
     func handleAppendList(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.AppendList(twoArguments(input))
+        do {
+            return try Sugar.AppendList(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.AppendList.self, level: error.level + 1))
+        }
     }
 
     func handleHeadList(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.HeadList(value: singleArgument(input))
+        do {
+            return try Sugar.HeadList(value: singleArgument(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.HeadList.self, level: error.level + 1))
+        }
     }
 
     func handleTailList(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.TailList(value: singleArgument(input))
+        do {
+            return try Sugar.TailList(value: singleArgument(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.TailList.self, level: error.level + 1))
+        }
+    }
+
+    func handleLt(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return try Sugar.Lt(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Lt.self,
+                                           level: error.level + 1))
+        }
+    }
+
+    func handleGt(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return try Sugar.Gt(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Gt.self,
+                                           level: error.level + 1))
+        }
+    }
+
+    func handleIsZero(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return try Sugar.IsZero(value: singleArgument(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.IsZero.self,
+                                           level: error.level + 1))
+        }
     }
 
     // MARK: - negation
     func handleNegation(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.Neg(value: singleArgument(input))
+        do {
+            return try Sugar.Neg(value: singleArgument(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Neg.self, level: error.level + 1))
+        }
     }
     // MARK: - subtraction
     func handleSubtract(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.Subtract(twoArguments(input))
+        do {
+            return try Sugar.Subtract(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Subtract.self, level: error.level + 1))
+        }
     }
 
     // MARK: - addition
     func handleSum(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.Sum(input.map(parse))
+        do {
+            return try Sugar.Sum(input.map(parse))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Sum.self, level: error.level + 1))
+        }
     }
 
     func handleAdd(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.Add(twoArguments(input))
+        do {
+            return try Sugar.Add(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Add.self, level: error.level + 1))
+        }
+    }
+
+    func handleAnd(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return try Sugar.And(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.And.self, level: error.level + 1))
+        }
+    }
+
+    func handleOr(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return try Sugar.Or(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Or.self, level: error.level + 1))
+        }
+    }
+
+    func handleNot(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return try Sugar.Not(value: singleArgument(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Not.self, level: error.level + 1))
+        }
     }
 
     func handleIntAdd(_ input: Array<Any>) throws -> SugarExpression {
-        var operation = try Sugar.Add(twoArguments(input))
-        operation.typeHelper = .int
-        return operation
+        do {
+            var operation = try Sugar.Add(twoArguments(input))
+            operation.typeHelper = .int
+            return operation
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: "Int Add", level: error.level + 1))
+        }
     }
 
     func handleFloatAdd(_ input: Array<Any>) throws -> SugarExpression {
-        var operation = try Sugar.Add(twoArguments(input))
-        operation.typeHelper = .float
-        return operation
+        do {
+            var operation = try Sugar.Add(twoArguments(input))
+            operation.typeHelper = .float
+            return operation
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: "Float Add", level: error.level + 1))
+        }
     }
 
     // MARK: - Mupltiplication
     func handleMultiplication(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.Multiplication(twoArguments(input))
+        do {
+            return try Sugar.Multiplication(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Multiplication.self, level: error.level + 1))
+        }
+    }
+
+    func handleDivision(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return try Sugar.Division(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Division.self, level: error.level + 1))
+        }
     }
 
     func handleIntMultiplication(_ input: Array<Any>) throws -> SugarExpression {
-        var operation = try Sugar.Multiplication(twoArguments(input))
-        operation.typeHelper = .int
-        return operation
+        do {
+            var operation = try Sugar.Multiplication(twoArguments(input))
+            operation.typeHelper = .int
+            return operation
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: "Int Multiplication", level: error.level + 1))
+        }
     }
 
     func handleFloatMultiplication(_ input: Array<Any>) throws -> SugarExpression {
-        var operation = try Sugar.Multiplication(twoArguments(input))
-        operation.typeHelper = .float
-        return operation
+        do {
+            var operation = try Sugar.Multiplication(twoArguments(input))
+            operation.typeHelper = .float
+            return operation
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: "Float Multiplication", level: error.level + 1))
+        }
     }
 
     func handleToInt(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.ToInt(value: singleArgument(input))
+        do {
+            return try Sugar.ToInt(value: singleArgument(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.ToInt.self, level: error.level + 1))
+        }
     }
 
     func handleToFloat(_ input: Array<Any>) throws -> SugarExpression {
-        try Sugar.ToFloat(value: singleArgument(input))
+        do {
+            return try Sugar.ToFloat(value: singleArgument(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.ToFloat.self, level: error.level + 1))
+        }
     }
 }
 
@@ -160,7 +318,8 @@ private extension ParserImplementation {
 
     func argumentCountCheck(_ input: Array<Any>, count: Int) throws {
         guard input.count == count else {
-            throw E.Error.wrongArgumentsCount
+            throw E.Error.wrongArgumentsCount(.init(parent: nil,
+                                                    input: input, level: 0))
         }
     }
 

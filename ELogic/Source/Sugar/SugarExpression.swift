@@ -10,7 +10,7 @@ import Foundation
 /// Protocol representing high level expressions
 public protocol SugarExpression {
     /// Converts high level expression to Core level expression
-    func deSugar() -> Expression
+    func deSugar() throws -> Expression
     func deSugarC() -> String
 }
 

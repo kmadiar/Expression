@@ -1,19 +1,19 @@
 //
-//  SugarAdd.swift
+//  Sugar+Devision.swift
 //  ELogic
 //
-//  Created by Kostiantyn Madiar on 18.10.2022.
+//  Created by Kostiantyn Madiar on 01.11.2022.
 //
 
 import Foundation
 
-/// Sugar operation type representing addition
+/// Sugar operation type representing division
 public extension Sugar {
-    struct Add {
+    struct Division {
         public enum TypeHelper: String {
-            case int = "int_add"
-            case float = "float_add"
-            case generic = "add"
+            case int = "int_div"
+            case float = "float_div"
+            case generic = "div"
         }
 
         public let left: SugarExpression
@@ -32,9 +32,9 @@ public extension Sugar {
 }
 
 // MARK: - Expression conformance
-extension Sugar.Add: SugarExpression {
+extension Sugar.Division: SugarExpression {
     public func deSugarC() -> String {
-        "(\(left.deSugarC()) + \(right.deSugarC()))"
+        "(\(left.deSugarC()) / \(right.deSugarC()))"
     }
 
     public func deSugar() throws -> Expression {
@@ -50,7 +50,7 @@ extension Sugar.Add: SugarExpression {
             left = self.left
             right = self.right
         }
-        return E.Add(left: try left.deSugar(),
-                     right: try right.deSugar())
+        return E.Division(left: try left.deSugar(),
+                          right: try right.deSugar())
     }
 }

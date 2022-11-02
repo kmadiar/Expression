@@ -15,6 +15,8 @@ let listInputs = [("list", cWriter.makeListOutput),
                   ("appendList", cWriter.makeListOutput)]
 
 let mathInputs = [("input", cWriter.makeEOutput),
+                  ("input_error", cWriter.makeEOutput),
+                  ("division_by_zero", cWriter.makeEOutput),
                   ("sugarInput", cWriter.makeEOutput)]
 
 let inputs = listInputs + mathInputs
@@ -29,7 +31,8 @@ func handle(_ input: String,
     do {
         guard let content = try? ymlReader.read(fileName: input),
               let yaml = try? Yams.load(yaml: content) else {
-            throw E.Error.badInput
+            throw E.Error.badInput(.init(parent: nil,
+                                         input: input, level: 0))
         }
 
         let parser: ELogic.Parser = ParserImplementation()
@@ -38,7 +41,7 @@ func handle(_ input: String,
         let cOutput = handleFunction(expression.deSugarC())
         try cWriter.create(input, content: cOutput)
 
-        print(expression.deSugar().eval())
+        print(try expression.deSugar().eval())
         print(cOutput)
     } catch {
         print(error)
@@ -48,4 +51,15 @@ func handle(_ input: String,
     print("              ")
 }
 
-listInputs.forEach(handle)
+inputs.forEach(handle)
+
+let parser: ELogic.Parser = ParserImplementation()
+while let input = readLine() {
+    do {
+        let yaml = try Yams.load(yaml: input)
+        let parsed = try parser.parse(yaml)
+        print(try parsed.deSugar().eval())
+    } catch {
+        print(error)
+    }
+}

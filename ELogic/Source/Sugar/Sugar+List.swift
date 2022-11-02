@@ -20,8 +20,8 @@ public extension Sugar {
 
 // MARK: - Expression conformance
 extension Sugar.List: SugarExpression {
-    public func deSugar() -> Expression {
-        E.List(value: value.map { $0.deSugar() })
+    public func deSugar() throws -> Expression {
+        E.List(value: try value.map { try $0.deSugar() })
     }
 
     public func deSugarC() -> String {
@@ -43,7 +43,8 @@ extension Sugar.List: SugarExpression {
     }
 
     func typeAnnotation() -> String {
-        let unwrapped = value.map { $0.deSugar().eval() }
+        // TODO: - add errors remove force unwrap
+        let unwrapped = try! value.map { try $0.deSugar().eval() }
         if unwrapped as? Array<E.Int> != nil {
             return "int"
         }

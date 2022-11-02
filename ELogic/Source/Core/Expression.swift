@@ -10,6 +10,6 @@ import Foundation
 public enum E {}
 
 public protocol Expression {
-    func eval() -> Expression
+    func eval() throws -> Expression
     func unparse() -> Any
 }
