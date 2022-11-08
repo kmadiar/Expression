@@ -30,6 +30,7 @@ public extension E {
         case unknownType(CoreError)
         case badInput(CoreError)
         case parseError(CoreError)
+        case variableNotFound(CoreError)
     }
 
 }
@@ -67,6 +68,9 @@ extension E.Error: CustomDebugStringConvertible {
         case let .unknownType(input):
             inputError = input
             message = "Unknown type"
+        case let .variableNotFound(input):
+            inputError = input
+            message = "variable not found"
         }
         var output = message + " " + "\(inputError.input)"
         if let parentError = inputError.parent {
@@ -86,6 +90,7 @@ extension E.Error: CustomDebugStringConvertible {
         case let .badInput(cError): return cError
         case let .parseError(cError): return cError
         case let .unknownType(cError): return cError
+        case let .variableNotFound(cError): return cError
         }
     }
 

@@ -55,8 +55,8 @@ extension Sugar.Lt: SugarExpression {
 
     func deSugarInt(left: SugarExpression,
                     right: SugarExpression) throws -> Expression {
-        guard let left = try Sugar.ToInt(value: left).deSugar().eval() as? E.Int,
-              let right = try Sugar.ToInt(value: right).deSugar().eval() as? E.Int else {
+        guard let left = try Sugar.ToInt(value: left).deSugar() as? E.Int,
+              let right = try Sugar.ToInt(value: right).deSugar() as? E.Int else {
             throw E.Error.wrongArgument(.init(parent: nil,
                                               input: [left, right],
                                               level: 0))
@@ -66,8 +66,8 @@ extension Sugar.Lt: SugarExpression {
 
     func deSugarFloat(left: SugarExpression,
                       right: SugarExpression) throws -> Expression {
-        guard let left = try Sugar.ToFloat(value: left).deSugar().eval() as? E.Float,
-              let right = try Sugar.ToFloat(value: right).deSugar().eval() as? E.Float else {
+        guard let left = try Sugar.ToFloat(value: left).deSugar() as? E.Float,
+              let right = try Sugar.ToFloat(value: right).deSugar() as? E.Float else {
             throw E.Error.wrongArgument(.init(parent: nil,
                                               input: [left, right],
                                               level: 0))

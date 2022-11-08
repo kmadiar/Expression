@@ -15,7 +15,7 @@ public class ParserImplementation: Parser {
     public init() {}
 
     public func parse(_ input: Any) throws -> SugarExpression {
-        if let type = parseType(input: input) {
+        if let type = try parseType(input: input) {
             return type
         }
         return try parseList(input)
@@ -75,6 +75,14 @@ private extension ParserImplementation {
                 return try handleLt(localInput)
             case "gt":
                 return try handleGt(localInput)
+            case "setVar":
+                return try handleSetVar(localInput)
+            case "do":
+                return try handleDo(localInput)
+            case "let":
+                return try handleLet(localInput)
+            case "let*":
+                return try handleLetStar(localInput)
             default:
                 throw E.Error.unknownOperation(.init(parent: nil,
                                                      input: operation, level: 0))
@@ -88,6 +96,83 @@ private extension ParserImplementation {
 
 // MARK: - Parse operations
 private extension ParserImplementation {
+    // MARK: - variables
+    func handleLetStar(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            var localInput = input
+            try argumentCountCheck(input, count: 3)
+
+            let body = try parse(localInput.removeLast())
+
+            var pairs: [(String, SugarExpression)] = []
+            while !localInput.isEmpty {
+                let arguments = try twoArguments(localInput)
+
+                guard let name = arguments.0 as? Sugar.Symbol else {
+                    throw E.Error.wrongArgument(.init(parent: nil,
+                                                      input: input,
+                                                      level: 0))
+                }
+                pairs.append((name.value, arguments.1))
+                localInput.removeFirst(2)
+            }
+
+            return Sugar.LetStar(bindings: pairs, body: body)
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: input,
+                                           level: error.level + 1))
+        }
+    }
+
+    func handleLet(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            try argumentCountCheck(input, count: 3)
+            let name = try parse(input[0])
+            let value = try parse(input[1])
+            let body = try parse(input[2])
+
+            guard let name = name as? Sugar.Symbol else {
+                throw E.Error.wrongArgument(.init(parent: nil,
+                                                  input: input,
+                                                  level: 0))
+            }
+
+            return Sugar.Let(name: name.value,
+                             value: value,
+                             body: body)
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: input,
+                                           level: error.level + 1))
+        }
+    }
+
+    func handleDo(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return Sugar.Do(value: try input.map(parse))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: input,
+                                           level: error.level + 1))
+        }
+    }
+    func handleSetVar(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            let arguments = try twoArguments(input)
+            guard let name = arguments.0 as? Sugar.Symbol else {
+                throw E.Error.wrongArgument(.init(parent: nil,
+                                                  input: input,
+                                                  level: 0))
+            }
+            return Sugar.SetVar(left: name.value,
+                                right: arguments.1)
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: input,
+                                           level: error.level + 1))
+        }
+    }
     // MARK: - list
     func handleList(_ input: Array<Any>) throws -> SugarExpression {
         do {
@@ -317,17 +402,26 @@ private extension ParserImplementation {
     }
 
     func argumentCountCheck(_ input: Array<Any>, count: Int) throws {
-        guard input.count == count else {
+        guard input.count >= count else {
             throw E.Error.wrongArgumentsCount(.init(parent: nil,
                                                     input: input, level: 0))
         }
     }
 
-    func parseType( input: Any) -> SugarExpression? {
-        parseInt(input) ??
-        parseFloat(input) ??
-        parseBool(input) ??
-        nil
+    func parseType( input: Any) throws -> SugarExpression? {
+        if let int =  parseInt(input) {
+            return int
+        }
+        if let float = parseFloat(input) {
+            return float
+        }
+        if let bool = parseBool(input) {
+            return bool
+        }
+        if let symbol = try parseSymbol(input) {
+            return symbol
+        }
+        return nil
     }
 
     func parseBool(_ input: Any) -> SugarExpression? {
@@ -348,6 +442,14 @@ private extension ParserImplementation {
     func parseFloat(_ input: Any) -> SugarExpression? {
         if let input = input as? Double {
             return Sugar.Float(value: Float(input))
+        }
+
+        return nil
+    }
+
+    func parseSymbol(_ input: Any) throws -> SugarExpression? {
+        if let localInput = input as? String {
+            return Sugar.Symbol(value: localInput)
         }
 
         return nil

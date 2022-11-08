@@ -17,9 +17,12 @@ let listInputs = [("list", cWriter.makeListOutput),
 let mathInputs = [("input", cWriter.makeEOutput),
                   ("input_error", cWriter.makeEOutput),
                   ("division_by_zero", cWriter.makeEOutput),
-                  ("sugarInput", cWriter.makeEOutput)]
+                  ("sugarInput", cWriter.makeEOutput),
+                  ("letstar", cWriter.makeEOutput)]
 
 let inputs = listInputs + mathInputs
+
+var context = E.Context(variables: .init(bindings: [:]))
 
 func handle(_ input: String,
             handleFunction: (String) -> String) {
@@ -41,7 +44,7 @@ func handle(_ input: String,
         let cOutput = handleFunction(expression.deSugarC())
         try cWriter.create(input, content: cOutput)
 
-        print(try expression.deSugar().eval())
+        print(try expression.deSugar().eval(context))
         print(cOutput)
     } catch {
         print(error)
@@ -58,7 +61,7 @@ while let input = readLine() {
     do {
         let yaml = try Yams.load(yaml: input)
         let parsed = try parser.parse(yaml)
-        print(try parsed.deSugar().eval())
+        print(try parsed.deSugar().eval(context))
     } catch {
         print(error)
     }

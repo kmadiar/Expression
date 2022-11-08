@@ -22,12 +22,16 @@ extension E.Float: Expression {
         value
     }
 
-    func eval() -> Expression {
+    func eval(_ context: E.Context) -> Expression {
         self
     }
 }
 
-extension E.Float {
+extension E.Float: NumericType {
+    func isZero() -> Bool {
+        value == .zero
+    }
+
     static func + (lhs: Self, rhs: Self) -> Self {
         .init(value: lhs.value + rhs.value)
     }
