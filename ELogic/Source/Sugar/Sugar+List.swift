@@ -25,30 +25,31 @@ extension Sugar.List: SugarExpression {
     }
 
     public func deSugarC() -> String {
-        guard !value.isEmpty else {
-            return "{}"
-        }
-        var value = value
-        let first = value.removeFirst()
-        var output = typeAnnotation() + " x[] = "
-        output += "{" + "\(first.deSugarC())"
-
-        output = value.reduce(output, { partialResult, next in
-            partialResult + ", \(next.deSugarC())"
-        })
-
-        output += "}"
-
-        return output
+        "" // TODO: - add implementation
+//        guard !value.isEmpty else {
+//            return "{}"
+//        }
+//        var value = value
+//        let first = value.removeFirst()
+//        var output = typeAnnotation() + " x[] = "
+//        output += "{" + "\(first.deSugarC())"
+//
+//        output = value.reduce(output, { partialResult, next in
+//            partialResult + ", \(next.deSugarC())"
+//        })
+//
+//        output += "}"
+//
+//        return output
     }
 
-    func typeAnnotation() -> String {
-        // TODO: - add errors remove force unwrap
-        let unwrapped = try! value.map { try $0.deSugar().eval() }
-        if unwrapped as? Array<E.Int> != nil {
-            return "int"
-        }
-
-        return ""
-    }
+//    func typeAnnotation() -> String {
+//        // TODO: - add errors remove force unwrap
+//        let unwrapped = try! value.map { try $0.deSugar().eval() }
+//        if unwrapped as? Array<E.Int> != nil {
+//            return "int"
+//        }
+//
+//        return ""
+//    }
 }

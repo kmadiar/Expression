@@ -28,12 +28,12 @@ extension E.Division: Expression {
         ["div", left.unparse(), right.unparse()]
     }
 
-    func eval() throws -> Expression {
+    func eval(_ context: E.Context) throws -> Expression {
         do {
-            if let int = try evalEInt() {
+            if let int = try evalEInt(context) {
                 return int
             }
-            if let float = try evalEFloat() {
+            if let float = try evalEFloat(context) {
                 return float
             }
 
@@ -47,9 +47,9 @@ extension E.Division: Expression {
                                           level: 0))
     }
 
-    func evalEFloat() throws -> Expression? {
-        if let left = try left.eval() as? E.Float,
-           let right = try right.eval() as? E.Float {
+    func evalEFloat(_ context: E.Context) throws -> Expression? {
+        if let left = try left.eval(context) as? E.Float,
+           let right = try right.eval(context) as? E.Float {
             if right.value == .zero {
                 throw E.Error.devisionByZero(.init(parent: nil,
                                                    input: unparse(),
@@ -60,9 +60,9 @@ extension E.Division: Expression {
         return nil
     }
 
-    func evalEInt() throws -> Expression? {
-        if let left = try left.eval() as? E.Int,
-           let right = try right.eval() as? E.Int {
+    func evalEInt(_ context: E.Context) throws -> Expression? {
+        if let left = try left.eval(context) as? E.Int,
+           let right = try right.eval(context) as? E.Int {
             if right.value == .zero {
                 throw E.Error.devisionByZero(.init(parent: nil,
                                                    input: unparse(),

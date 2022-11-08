@@ -19,9 +19,14 @@ extension E {
 }
 
 extension E.List: Expression {
-    func eval() throws -> Expression {
-        // TODO: - add error propagation
-        E.List(value: try value.map { try $0.eval() })
+    func eval(_ context: E.Context) throws -> Expression {
+        do {
+            return E.List(value: try value.map { try $0.eval(context) })
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: value,
+                                           level: error.level + 1))
+        }
     }
 
     func unparse() -> Any {

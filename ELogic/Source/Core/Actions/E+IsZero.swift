@@ -18,12 +18,12 @@ extension E {
 }
 
 extension E.IsZero: Expression {
-    func eval() throws -> Expression {
+    func eval(_ context: E.Context) throws -> Expression {
         do {
-            if let int = try value.eval() as? E.Int {
+            if let int = try value.eval(context) as? E.Int {
                 return E.Bool(value: int.value == 0)
             }
-            if let float = try value.eval() as? E.Float {
+            if let float = try value.eval(context) as? E.Float {
                 return E.Bool(value: float.value == .zero)
             }
         } catch let error as E.Error {

@@ -22,15 +22,15 @@ extension E.ToFloat: Expression {
         ["to_float", value.unparse()]
     }
 
-    func eval() throws -> Expression {
+    func eval(_ context: E.Context) throws -> Expression {
         do {
-            if let int = try evalEInt() {
+            if let int = try evalEInt(context) {
                 return int
             }
-            if let float = try evalEFloat() {
+            if let float = try evalEFloat(context) {
                 return float
             }
-            if let bool = try evalEBool() {
+            if let bool = try evalEBool(context) {
                 return bool
             }
         } catch let error as E.Error {
@@ -43,22 +43,22 @@ extension E.ToFloat: Expression {
                                           level: 0))
     }
 
-    func evalEFloat() throws -> Expression? {
-        if let value = try value.eval() as? E.Float {
+    func evalEFloat(_ context: E.Context) throws -> Expression? {
+        if let value = try value.eval(context) as? E.Float {
             return value
         }
         return nil
     }
 
-    func evalEInt() throws -> Expression? {
-        if let value = try value.eval() as? E.Int {
+    func evalEInt(_ context: E.Context) throws -> Expression? {
+        if let value = try value.eval(context) as? E.Int {
             return E.Float(value: Float(value.value))
         }
         return nil
     }
 
-    func evalEBool() throws -> Expression? {
-        if let value = try value.eval() as? E.Bool {
+    func evalEBool(_ context: E.Context) throws -> Expression? {
+        if let value = try value.eval(context) as? E.Bool {
             return E.Float(value: value.value ? 1.0 : 0.0)
         }
         return nil

@@ -22,7 +22,7 @@ extension E.Bool: Expression {
         value
     }
 
-    func eval() -> Expression {
+    func eval(_ context: E.Context) -> Expression {
         self
     }
 }

@@ -22,12 +22,16 @@ extension E.Int: Expression {
         value
     }
 
-    func eval() -> Expression {
+    func eval(_ context: E.Context) throws -> Expression {
         self
     }
 }
 
-extension E.Int {
+extension E.Int: NumericType {
+    func isZero() -> Bool {
+        value == .zero
+    }
+    
     static func + (lhs: Self, rhs: Self) -> Self {
         .init(value: lhs.value + rhs.value)
     }
