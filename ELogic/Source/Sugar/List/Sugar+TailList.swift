@@ -34,9 +34,4 @@ extension Sugar.TailList: SugarExpression {
         }
         return try last.deSugar()
     }
-
-    // TODO: - dummy implementations
-    public func deSugarC() -> String {
-        ""
-    }
 }

@@ -34,9 +34,4 @@ extension Sugar.HeadList: SugarExpression {
         }
         return try last.deSugar()
     }
-
-    // TODO: - dummy implementations
-    public func deSugarC() -> String {
-        ""
-    }
 }

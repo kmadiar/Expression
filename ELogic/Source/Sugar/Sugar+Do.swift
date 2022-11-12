@@ -23,8 +23,4 @@ extension Sugar.Do: SugarExpression {
     public func deSugar() throws -> Expression {
         E.Do(values: try value.map { try $0.deSugar() })
     }
-
-    public func deSugarC() -> String {
-        ""
-    }
 }

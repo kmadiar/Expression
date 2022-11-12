@@ -35,8 +35,4 @@ extension Sugar.AppendList: SugarExpression {
 
         return try Sugar.List(value: list.value + [right]).deSugar()
     }
-
-    public func deSugarC() -> String {
-        ""
-    }
 }

@@ -36,8 +36,4 @@ extension Sugar.LetStar: SugarExpression {
 
         return try initial.deSugar()
     }
-
-    public func deSugarC() -> String {
-        "" // TODO: - add implementation
-    }
 }

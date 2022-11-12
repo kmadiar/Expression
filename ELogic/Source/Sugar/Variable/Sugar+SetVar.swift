@@ -25,9 +25,4 @@ extension Sugar.SetVar: SugarExpression {
     public func deSugar() throws -> Expression {
         E.SetVar(left: left, right: try right.deSugar())
     }
-
-    // TODO: - dummy implementations
-    public func deSugarC() -> String {
-        ""
-    }
 }

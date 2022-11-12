@@ -23,8 +23,4 @@ extension Sugar.IsZero: SugarExpression {
     public func deSugar() throws -> Expression {
         E.IsZero(value: try value.deSugar())
     }
-
-    public func deSugarC() -> String {
-        "" // TODO: - add translation
-    }
 }
