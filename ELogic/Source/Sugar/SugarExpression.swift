@@ -14,4 +14,8 @@ public protocol SugarExpression {
     func deSugarC() -> String
 }
 
+public extension SugarExpression {
+    func deSugarC() -> String { "" }
+}
+
 public enum Sugar {}

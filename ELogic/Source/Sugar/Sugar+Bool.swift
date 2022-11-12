@@ -22,7 +22,7 @@ extension Sugar.Bool: SugarExpression {
         value ? "true" : "false"
     }
 
-    public func deSugar() -> Expression {
+    public func deSugar() throws -> Expression {
         E.Bool(value: value)
     }
 }

@@ -28,8 +28,4 @@ extension Sugar.Let: SugarExpression {
                                right: try value.deSugar()),
                       try body.deSugar()])
     }
-
-    public func deSugarC() -> String {
-        "" // TODO: - add implementation
-    }
 }

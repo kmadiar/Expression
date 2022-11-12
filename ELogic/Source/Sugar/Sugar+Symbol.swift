@@ -22,7 +22,7 @@ extension Sugar.Symbol: SugarExpression {
         "\(value)"
     }
 
-    public func deSugar() -> Expression {
+    public func deSugar() throws -> Expression {
         E.Symbol(value: value)
     }
 }
