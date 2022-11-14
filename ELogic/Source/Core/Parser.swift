@@ -89,6 +89,8 @@ private extension ParserImplementation {
                 return try handleCall(localInput)
             case "fun":
                 return try handleFun(localInput)
+            case "if":
+                return try handleIf(localInput)
             default:
                 throw E.Error.unknownOperation(.init(parent: nil,
                                                      input: operation, level: 0))
@@ -103,6 +105,23 @@ private extension ParserImplementation {
 // MARK: - Parse operations
 private extension ParserImplementation {
     // MARK: - variables
+    func handleIf(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            try argumentCountCheck(input, count: 3)
+
+            let condition = try parse(input[0])
+            let mainBranch = try parse(input[1])
+            let altBranch = try parse(input[2])
+
+            return Sugar.If(condition: condition,
+                            mainBranch: mainBranch,
+                            altBranch: altBranch)
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: input,
+                                           level: error.level + 1))
+        }
+    }
     func handleFun(_ input: Array<Any>) throws -> SugarExpression {
         do {
             try argumentCountCheck(input, count: 3)
