@@ -45,5 +45,9 @@ extension E {
         public func expand() -> Context {
             Context(variables: .init(bindings: [:]), parent: self)
         }
+
+        public func clone() -> Context {
+            Context(variables: variables)
+        }
     }
 }

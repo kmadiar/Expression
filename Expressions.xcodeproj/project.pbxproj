@@ -18,6 +18,12 @@
 		7047B08B291AF0B8007E263A /* Sugar+Let.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B08A291AF0B8007E263A /* Sugar+Let.swift */; };
 		7047B08D291AF444007E263A /* SugarLetStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B08C291AF444007E263A /* SugarLetStar.swift */; };
 		7047B08F291B0526007E263A /* letstar.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7047B08E291B0526007E263A /* letstar.yml */; };
+		7047B091292185DD007E263A /* Sugar+Lambda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B090292185DD007E263A /* Sugar+Lambda.swift */; };
+		7047B09329218664007E263A /* E+LambdaDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B09229218664007E263A /* E+LambdaDefinition.swift */; };
+		7047B09529218815007E263A /* Sugar+Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B09429218815007E263A /* Sugar+Call.swift */; };
+		7047B097292188A6007E263A /* E+Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B096292188A6007E263A /* E+Call.swift */; };
+		7047B09929218990007E263A /* E+LambdaReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B09829218990007E263A /* E+LambdaReference.swift */; };
+		7047B09B2922D8B9007E263A /* Sugar+Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B09A2922D8B9007E263A /* Sugar+Func.swift */; };
 		70DB8A4B28FE0BBB002AA41E /* SugarExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4A28FE0BBB002AA41E /* SugarExpression.swift */; };
 		70DB8A4D28FE0BE8002AA41E /* Sugar+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4C28FE0BE8002AA41E /* Sugar+Add.swift */; };
 		70DB8A4F28FE0F6D002AA41E /* Sugar+Subtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4E28FE0F6D002AA41E /* Sugar+Subtract.swift */; };
@@ -114,6 +120,12 @@
 		7047B08A291AF0B8007E263A /* Sugar+Let.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Let.swift"; sourceTree = "<group>"; };
 		7047B08C291AF444007E263A /* SugarLetStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugarLetStar.swift; sourceTree = "<group>"; };
 		7047B08E291B0526007E263A /* letstar.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = letstar.yml; sourceTree = "<group>"; };
+		7047B090292185DD007E263A /* Sugar+Lambda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Lambda.swift"; sourceTree = "<group>"; };
+		7047B09229218664007E263A /* E+LambdaDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+LambdaDefinition.swift"; sourceTree = "<group>"; };
+		7047B09429218815007E263A /* Sugar+Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Call.swift"; sourceTree = "<group>"; };
+		7047B096292188A6007E263A /* E+Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+Call.swift"; sourceTree = "<group>"; };
+		7047B09829218990007E263A /* E+LambdaReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+LambdaReference.swift"; sourceTree = "<group>"; };
+		7047B09A2922D8B9007E263A /* Sugar+Func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Func.swift"; sourceTree = "<group>"; };
 		70DB8A4A28FE0BBB002AA41E /* SugarExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugarExpression.swift; sourceTree = "<group>"; };
 		70DB8A4C28FE0BE8002AA41E /* Sugar+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Add.swift"; sourceTree = "<group>"; };
 		70DB8A4E28FE0F6D002AA41E /* Sugar+Subtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Subtract.swift"; sourceTree = "<group>"; };
@@ -261,6 +273,9 @@
 				70DB8A5628FE172B002AA41E /* Sugar+Float.swift */,
 				7047B07B2918453C007E263A /* Sugar+Symbol.swift */,
 				70DB8A5A28FF2D30002AA41E /* Sugar+Bool.swift */,
+				7047B090292185DD007E263A /* Sugar+Lambda.swift */,
+				7047B09A2922D8B9007E263A /* Sugar+Func.swift */,
+				7047B09429218815007E263A /* Sugar+Call.swift */,
 			);
 			path = Sugar;
 			sourceTree = "<group>";
@@ -303,6 +318,9 @@
 				70EFDB9928EF5FF600087CAA /* E+Bool.swift */,
 				70EFDBB428FC9EE900087CAA /* E+Float.swift */,
 				7047B07F29184686007E263A /* E+Context.swift */,
+				7047B09229218664007E263A /* E+LambdaDefinition.swift */,
+				7047B09829218990007E263A /* E+LambdaReference.swift */,
+				7047B096292188A6007E263A /* E+Call.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -581,8 +599,10 @@
 				70DB8A6E29008467002AA41E /* input.c in Sources */,
 				70DB8A692900792B002AA41E /* E+List.swift in Sources */,
 				70DB8A4D28FE0BE8002AA41E /* Sugar+Add.swift in Sources */,
+				7047B09929218990007E263A /* E+LambdaReference.swift in Sources */,
 				70EFDBA628FC8AB400087CAA /* Parser.swift in Sources */,
 				70EFDBB928FCA45800087CAA /* E+ToInt.swift in Sources */,
+				7047B09529218815007E263A /* Sugar+Call.swift in Sources */,
 				70DB8A76290097FC002AA41E /* Sugar+HeadList.swift in Sources */,
 				70DB8A842910A32E002AA41E /* Sugar+And.swift in Sources */,
 				70EFDB9028EF5AA400087CAA /* Expression.swift in Sources */,
@@ -593,6 +613,9 @@
 				70DB8A5F28FF41B7002AA41E /* Sugar+ToFloat.swift in Sources */,
 				70EFDB9128EF5ABC00087CAA /* E+Int.swift in Sources */,
 				7047B07E291845C0007E263A /* E+Symbol.swift in Sources */,
+				7047B091292185DD007E263A /* Sugar+Lambda.swift in Sources */,
+				7047B09329218664007E263A /* E+LambdaDefinition.swift in Sources */,
+				7047B09B2922D8B9007E263A /* Sugar+Func.swift in Sources */,
 				70EFDBB728FCA35400087CAA /* E+ToFloat.swift in Sources */,
 				70DB8A5128FE1036002AA41E /* Sugar+Neg.swift in Sources */,
 				70EFDB9228EF5AC200087CAA /* E+Add.swift in Sources */,
@@ -601,6 +624,7 @@
 				70DB8A902911C1C5002AA41E /* Sugar+IsZero.swift in Sources */,
 				70EFDBAB28FC8BCC00087CAA /* YMLReader.swift in Sources */,
 				70DB8A4B28FE0BBB002AA41E /* SugarExpression.swift in Sources */,
+				7047B097292188A6007E263A /* E+Call.swift in Sources */,
 				70DB8A6128FF4698002AA41E /* Sugar+Sum.swift in Sources */,
 				70DB8A5728FE172B002AA41E /* Sugar+Float.swift in Sources */,
 				70DB8A862910A337002AA41E /* Sugar+Or.swift in Sources */,
