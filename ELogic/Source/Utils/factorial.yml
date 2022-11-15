@@ -1,0 +1,15 @@
+[
+[fun,
+    fac,
+    [x],
+    [if,
+        [eq, x, 1],
+        1,
+        [mul,
+            x,
+            [call,
+                fac,
+                [[sub, x, 1]]]]]],
+[call, fac, [5]]]
+
+#List(value: [ELogic.E.LambdaReference(variable: ["x"], body: ELogic.E.If(condition: ELogic.E.Eq(left: ELogic.E.Symbol(value: "x"), right: ELogic.E.Int(value: 1)), mainBranch: ELogic.E.Int(value: 1), altBranch: ELogic.E.Multiplication(left: ELogic.E.Symbol(value: "x"), right: ELogic.E.Call(function: ELogic.E.Symbol(value: "fac"), parameter: [ELogic.E.Add(left: ELogic.E.Symbol(value: "x"), right: ELogic.E.Multiplication(left: ELogic.E.Int(value: -1), right: ELogic.E.Int(value: 1)))]))), closure: ELogic.E.Context), ELogic.E.Int(value: 120)])

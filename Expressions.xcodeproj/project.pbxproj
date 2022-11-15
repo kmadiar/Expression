@@ -28,6 +28,7 @@
 		7047B09F2922F525007E263A /* E+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B09E2922F525007E263A /* E+If.swift */; };
 		7047B0A12922F873007E263A /* Sugar+Eq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B0A02922F873007E263A /* Sugar+Eq.swift */; };
 		7047B0A32922FB8A007E263A /* E+Eq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B0A22922FB8A007E263A /* E+Eq.swift */; };
+		7047B0A529241A6B007E263A /* factorial.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7047B0A429241A6B007E263A /* factorial.yml */; };
 		70DB8A4B28FE0BBB002AA41E /* SugarExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4A28FE0BBB002AA41E /* SugarExpression.swift */; };
 		70DB8A4D28FE0BE8002AA41E /* Sugar+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4C28FE0BE8002AA41E /* Sugar+Add.swift */; };
 		70DB8A4F28FE0F6D002AA41E /* Sugar+Subtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4E28FE0F6D002AA41E /* Sugar+Subtract.swift */; };
@@ -134,6 +135,7 @@
 		7047B09E2922F525007E263A /* E+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+If.swift"; sourceTree = "<group>"; };
 		7047B0A02922F873007E263A /* Sugar+Eq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Eq.swift"; sourceTree = "<group>"; };
 		7047B0A22922FB8A007E263A /* E+Eq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+Eq.swift"; sourceTree = "<group>"; };
+		7047B0A429241A6B007E263A /* factorial.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = factorial.yml; sourceTree = "<group>"; };
 		70DB8A4A28FE0BBB002AA41E /* SugarExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugarExpression.swift; sourceTree = "<group>"; };
 		70DB8A4C28FE0BE8002AA41E /* Sugar+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Add.swift"; sourceTree = "<group>"; };
 		70DB8A4E28FE0F6D002AA41E /* Sugar+Subtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Subtract.swift"; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				70DB8A5828FF2915002AA41E /* sugarInput.yml */,
 				70DB8A6628FF6334002AA41E /* CWriter.swift */,
 				7047B08E291B0526007E263A /* letstar.yml */,
+				7047B0A429241A6B007E263A /* factorial.yml */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 			files = (
 				70DB8A8229109FD2002AA41E /* division_by_zero.yml in Resources */,
 				70DB8A5928FF2915002AA41E /* sugarInput.yml in Resources */,
+				7047B0A529241A6B007E263A /* factorial.yml in Resources */,
 				7047B08F291B0526007E263A /* letstar.yml in Resources */,
 				70EFDBAC28FC8BD100087CAA /* input.yml in Resources */,
 				70DB8A7C29108FE8002AA41E /* input_error.yml in Resources */,

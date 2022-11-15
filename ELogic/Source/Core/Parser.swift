@@ -18,16 +18,19 @@ public class ParserImplementation: Parser {
         if let type = try parseType(input: input) {
             return type
         }
+        if let operation = try parseOperation(input) {
+            return operation
+        }
+
         return try parseList(input)
     }
 }
 
 private extension ParserImplementation {
-    func parseList(_ input: Any) throws -> SugarExpression {
+    func parseOperation(_ input: Any) throws -> SugarExpression? {
         if var localInput = input as? Array<Any> {
             guard let operation = localInput.first as? String else {
-                throw E.Error.emptyList(.init(parent: nil,
-                                              input: localInput, level: 0))
+                return nil
             }
             localInput.removeFirst()
             switch operation {
@@ -75,6 +78,8 @@ private extension ParserImplementation {
                 return try handleLt(localInput)
             case "gt":
                 return try handleGt(localInput)
+            case "eq":
+                return try handleEq(localInput)
             case "setvar":
                 return try handleSetVar(localInput)
             case "do":
@@ -92,9 +97,17 @@ private extension ParserImplementation {
             case "if":
                 return try handleIf(localInput)
             default:
-                throw E.Error.unknownOperation(.init(parent: nil,
-                                                     input: operation, level: 0))
+                return nil
             }
+        }
+        return nil
+
+    }
+
+    func parseList(_ input: Any) throws -> SugarExpression {
+        if let input = input as? Array<Any>,
+           let values = try? input.map(parse) {
+            return Sugar.List(value: values)
         }
 
         throw E.Error.unknownType(.init(parent: nil,
@@ -151,13 +164,13 @@ private extension ParserImplementation {
         do {
             try argumentCountCheck(input, count: 2)
 
-            guard let params = input[1] as? Array<Any> else {
+            guard let params = try parse(input[1]) as? Sugar.List else {
                 throw E.Error.wrongArgument(.init(parent: nil,
                                                   input: input,
                                                   level: 0))
             }
             return Sugar.Call(function: try parse(input[0]),
-                              param: try params.map { try parse($0) })
+                              param: params.value)
 
         } catch let error as E.Error {
             throw E.Error.parseError(.init(parent: error,
@@ -314,6 +327,16 @@ private extension ParserImplementation {
         } catch let error as E.Error {
             throw E.Error.parseError(.init(parent: error,
                                            input: Sugar.Gt.self,
+                                           level: error.level + 1))
+        }
+    }
+
+    func handleEq(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            return try Sugar.Eq(twoArguments(input))
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: Sugar.Eq.self,
                                            level: error.level + 1))
         }
     }

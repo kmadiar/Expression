@@ -18,7 +18,8 @@ let mathInputs = [("input", cWriter.makeEOutput),
                   ("input_error", cWriter.makeEOutput),
                   ("division_by_zero", cWriter.makeEOutput),
                   ("sugarInput", cWriter.makeEOutput),
-                  ("letstar", cWriter.makeEOutput)]
+                  ("letstar", cWriter.makeEOutput),
+                  ("factorial", cWriter.makeEOutput)]
 
 let inputs = listInputs + mathInputs
 

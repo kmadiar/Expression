@@ -29,4 +29,3 @@ extension Sugar.Eq: SugarExpression {
         E.Eq(left: try left.deSugar(), right: try right.deSugar())
     }
 }
-//[fun, fac, [x], [if, [eq, x, 1], 1, [mul, x, [call, fac, [[sub, x, 1]]]]]]
