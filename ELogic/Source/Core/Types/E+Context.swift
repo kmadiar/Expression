@@ -47,7 +47,7 @@ extension E {
         }
 
         public func clone() -> Context {
-            Context(variables: variables)
+            Context(variables: Environment(bindings: variables.bindings))
         }
     }
 }

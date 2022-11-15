@@ -94,6 +94,8 @@ private extension ParserImplementation {
                 return try handleCall(localInput)
             case "fun":
                 return try handleFun(localInput)
+            case "funrec":
+                return try handleFunRec(localInput)
             case "if":
                 return try handleIf(localInput)
             default:
@@ -135,6 +137,33 @@ private extension ParserImplementation {
                                            level: error.level + 1))
         }
     }
+
+    func handleFunRec(_ input: Array<Any>) throws -> SugarExpression {
+        do {
+            try argumentCountCheck(input, count: 3)
+            var localInput = input
+            guard let name = localInput.removeFirst() as? String else {
+                throw E.Error.wrongArgument(.init(parent: nil,
+                                                  input: localInput[0],
+                                                  level: 0))
+            }
+            guard let lambda = try handleLambda(localInput) as? Sugar.Lambda else {
+                throw E.Error.wrongArgument(.init(parent: nil,
+                                                  input: localInput[0],
+                                                  level: 0))
+            }
+
+
+            return Sugar.FunRec(name: name,
+                              argumentNames: lambda.variable,
+                              body: lambda.body)
+        } catch let error as E.Error {
+            throw E.Error.parseError(.init(parent: error,
+                                           input: input,
+                                           level: error.level + 1))
+        }
+    }
+
     func handleFun(_ input: Array<Any>) throws -> SugarExpression {
         do {
             try argumentCountCheck(input, count: 3)
