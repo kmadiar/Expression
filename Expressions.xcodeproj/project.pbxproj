@@ -26,6 +26,8 @@
 		7047B09B2922D8B9007E263A /* Sugar+Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B09A2922D8B9007E263A /* Sugar+Func.swift */; };
 		7047B09D2922F4A1007E263A /* Sugar+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B09C2922F4A1007E263A /* Sugar+If.swift */; };
 		7047B09F2922F525007E263A /* E+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B09E2922F525007E263A /* E+If.swift */; };
+		7047B0A12922F873007E263A /* Sugar+Eq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B0A02922F873007E263A /* Sugar+Eq.swift */; };
+		7047B0A32922FB8A007E263A /* E+Eq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7047B0A22922FB8A007E263A /* E+Eq.swift */; };
 		70DB8A4B28FE0BBB002AA41E /* SugarExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4A28FE0BBB002AA41E /* SugarExpression.swift */; };
 		70DB8A4D28FE0BE8002AA41E /* Sugar+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4C28FE0BE8002AA41E /* Sugar+Add.swift */; };
 		70DB8A4F28FE0F6D002AA41E /* Sugar+Subtract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB8A4E28FE0F6D002AA41E /* Sugar+Subtract.swift */; };
@@ -130,6 +132,8 @@
 		7047B09A2922D8B9007E263A /* Sugar+Func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Func.swift"; sourceTree = "<group>"; };
 		7047B09C2922F4A1007E263A /* Sugar+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+If.swift"; sourceTree = "<group>"; };
 		7047B09E2922F525007E263A /* E+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+If.swift"; sourceTree = "<group>"; };
+		7047B0A02922F873007E263A /* Sugar+Eq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Eq.swift"; sourceTree = "<group>"; };
+		7047B0A22922FB8A007E263A /* E+Eq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "E+Eq.swift"; sourceTree = "<group>"; };
 		70DB8A4A28FE0BBB002AA41E /* SugarExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugarExpression.swift; sourceTree = "<group>"; };
 		70DB8A4C28FE0BE8002AA41E /* Sugar+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Add.swift"; sourceTree = "<group>"; };
 		70DB8A4E28FE0F6D002AA41E /* Sugar+Subtract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sugar+Subtract.swift"; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				70DB8A5E28FF41B7002AA41E /* Sugar+ToFloat.swift */,
 				70DB8A6028FF4698002AA41E /* Sugar+Sum.swift */,
 				70DB8A5028FE1036002AA41E /* Sugar+Neg.swift */,
+				7047B0A02922F873007E263A /* Sugar+Eq.swift */,
 				70DB8A892910A7A5002AA41E /* Sugar+Gt.swift */,
 				70DB8A7F29109CF2002AA41E /* Sugar+Division.swift */,
 				70DB8A8B2911AB23002AA41E /* Sugar+Lt.swift */,
@@ -319,6 +324,7 @@
 				70EFDB5E28EF54EB00087CAA /* E+Int.swift */,
 				7047B07D291845C0007E263A /* E+Symbol.swift */,
 				70DB8A682900792B002AA41E /* E+List.swift */,
+				7047B0A22922FB8A007E263A /* E+Eq.swift */,
 				7047B0862918693B007E263A /* E+Do.swift */,
 				70EFDB9928EF5FF600087CAA /* E+Bool.swift */,
 				70EFDBB428FC9EE900087CAA /* E+Float.swift */,
@@ -624,9 +630,11 @@
 				7047B091292185DD007E263A /* Sugar+Lambda.swift in Sources */,
 				7047B09329218664007E263A /* E+LambdaDefinition.swift in Sources */,
 				7047B09B2922D8B9007E263A /* Sugar+Func.swift in Sources */,
+				7047B0A12922F873007E263A /* Sugar+Eq.swift in Sources */,
 				70EFDBB728FCA35400087CAA /* E+ToFloat.swift in Sources */,
 				70DB8A5128FE1036002AA41E /* Sugar+Neg.swift in Sources */,
 				70EFDB9228EF5AC200087CAA /* E+Add.swift in Sources */,
+				7047B0A32922FB8A007E263A /* E+Eq.swift in Sources */,
 				70DB8A5528FE13CB002AA41E /* Sugar+Int.swift in Sources */,
 				7047B08529186423007E263A /* E+SetVar.swift in Sources */,
 				70DB8A902911C1C5002AA41E /* Sugar+IsZero.swift in Sources */,
