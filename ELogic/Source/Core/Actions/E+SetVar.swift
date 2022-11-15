@@ -28,6 +28,6 @@ extension E.SetVar: Expression {
     }
 
     func unparse() -> Any {
-        "setVar, \(left), \(right)"
+        "setvar, \(left), \(right)"
     }
 }
